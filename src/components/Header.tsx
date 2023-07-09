@@ -61,15 +61,16 @@ const Header = () => {
         </Link>,
         <div className="relative">
           <span
-            className={`${BUTTON_STYLE} cursor-pointer text-gray-4`}
+            className={`${BUTTON_STYLE} cursor-pointer text-gray-4 p-[10px] rounded-[8px] ${
+              visibleLogout && 'bg-gray-2'
+            }`}
             onClick={() => {
               setVisibleLogout(!visibleLogout);
             }}
           >{`USER_NAME`}</span>
           {visibleLogout && (
-            // TODO - 로그아웃 버튼 레이아웃 임의 지정. 디자인 맞추어 변경.
             <div
-              className="absolute top-[30px] text-white bg-black cursor-pointer"
+              className="absolute top-[36px] left-[1px] py-[10px] px-[16px] text-label1 text-gray-6 bg-white border-solid border-[1px] border-gray-3 rounded-[4px] cursor-pointer select-none"
               onClick={() => console.log('로그아웃')}
             >
               로그아웃
@@ -82,7 +83,7 @@ const Header = () => {
           href={{
             pathname: '/', // TODO - 로그인모달창
           }}
-          className="h-fit text-body2 text-gray-9"
+          className={`${BUTTON_STYLE} text-gray-9`}
         >
           로그인 / 회원가입
         </Link>,
