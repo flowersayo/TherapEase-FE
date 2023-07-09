@@ -10,8 +10,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        // sans: ['var(--default-font)'],
         sans: 'AppleSDGothicNeo',
-        logo: 'ClashDisplayRegular',
+        logo: ['var(--logo-font)'],
       },
       fontSize: {
         landingPageBody: [
