@@ -23,8 +23,8 @@ export default function Profile() {
       <span className="text-heading4 text-gray-9 self-start">
         {counselor_name} 상담사
       </span>
-      <span className="text-body2 text-gray-4">{contact}</span>
-      <span className="text-body3 text-gray-4">{introduction}</span>
+      <span className="text-body2 text-gray-4 self-start">{contact}</span>
+      <span className="text-body3 text-gray-4 self-start">{introduction}</span>
     </div>
   );
 }
