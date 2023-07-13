@@ -1,7 +1,7 @@
 // Clients Page
-
+import Profile from '@/components/timetable/Profile';
 const ClientsPage = () => {
-  return <div>Clients Page 내담자 목록 페이지</div>;
+  return <div className="w-full h-full"></div>;
 };
 
 export default ClientsPage;
