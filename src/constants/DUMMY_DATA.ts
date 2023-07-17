@@ -307,6 +307,30 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
           mainEmotion: 'sad',
           subEmotion: 'guilty',
           feeling: -1,
+          intensity: 5,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 0,
+          intensity: 1,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 1,
+          intensity: 3,
+        },
+      ],
+    },
+  },
+  {
+    '2023-05-24': {
+      emotions: [
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: -1,
           intensity: 4,
         },
         {
@@ -326,6 +350,102 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
   },
   {
     '2023-05-24': {
+      emotions: [
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: -1,
+          intensity: 4,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 0,
+          intensity: 1,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 1,
+          intensity: 3,
+        },
+      ],
+    },
+  },
+  {
+    '2023-05-25': {
+      emotions: [
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: -1,
+          intensity: 4,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 0,
+          intensity: 1,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 1,
+          intensity: 3,
+        },
+      ],
+    },
+  },
+  {
+    '2023-05-26': {
+      emotions: [
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: -1,
+          intensity: 2,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 0,
+          intensity: 3,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 1,
+          intensity: 5,
+        },
+      ],
+    },
+  },
+  {
+    '2023-05-27': {
+      emotions: [
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: -1,
+          intensity: 4,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 0,
+          intensity: 1,
+        },
+        {
+          mainEmotion: 'sad',
+          subEmotion: 'guilty',
+          feeling: 1,
+          intensity: 3,
+        },
+      ],
+    },
+  },
+  {
+    '2023-05-28': {
       emotions: [
         {
           mainEmotion: 'sad',
