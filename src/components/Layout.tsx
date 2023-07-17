@@ -3,7 +3,7 @@ import Header from './Header';
 import localFont from 'next/font/local';
 
 // const AppleSDGothicNeo = localFont({
-//   src: '../../public/fonts/AppleSDGothicNeoM.ttf',
+//   src: '../../public/fonts/AppleSDGothicNeoR.ttf',
 //   display: 'swap',
 //   variable: '--default-font',
 // });
