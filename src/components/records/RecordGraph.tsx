@@ -1,6 +1,6 @@
 import { parseDateString } from '@/utils/parseDate';
 
-import { IEmotion } from '@/interfaces/interfaces';
+import { IEmotion, IGraphRecord } from '@/interfaces/interfaces';
 
 import { DUMMY_EMOTION_GRAPH_RECORDS } from '@/constants/DUMMY_DATA';
 
@@ -26,9 +26,9 @@ const RecordGraph = ({ clientId }: Props) => {
 
       {/* 그래프 영역 */}
       <div className="h-[calc(100%-2.9rem)] flex justify-start items-end gap-[0.9rem]">
-        {DUMMY_EMOTION_GRAPH_RECORDS.map((record: any) => {
-          const date = parseDateString(Object.keys(record)[0]);
-          const emotions = Object.values(record)[0].emotions;
+        {DUMMY_EMOTION_GRAPH_RECORDS.map((record: IGraphRecord) => {
+          const date = parseDateString(record.date);
+          const emotions = record.emotions;
 
           return (
             <div className="flex flex-col items-center gap-[1.5rem]">
