@@ -1,14 +1,18 @@
 interface buttonProps {
-  icon?: React.ReactElement;
+  icon?: React.ReactNode;
   text: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
-export const ButtonLarge = ({ text, onClick, disabled }: buttonProps) => {
+export const ButtonLarge = ({
+  text,
+  onClick,
+  disabled = false,
+}: buttonProps) => {
   return (
     <button
-      className={`w-[369px] h-[62px] text-heading3 rounded-[48px] ${
+      className={`w-[36.9rem] h-[6.2rem] text-heading3 rounded-[4.8rem] ${
         disabled ? 'text-white bg-gray-6' : 'text-black bg-yellow-100'
       }`}
       onClick={onClick}
@@ -18,10 +22,14 @@ export const ButtonLarge = ({ text, onClick, disabled }: buttonProps) => {
   );
 };
 
-export const ButtonMedium = ({ text, onClick, disabled }: buttonProps) => {
+export const ButtonMedium = ({
+  text,
+  onClick,
+  disabled = false,
+}: buttonProps) => {
   return (
     <button
-      className={`w-[321px] h-[62px] text-heading3 rounded-[48px] ${
+      className={`w-[32.1rem] h-[6.2rem] text-heading3 rounded-[4.8rem] ${
         disabled ? 'text-white bg-gray-6' : 'text-black bg-yellow-100'
       }`}
       onClick={onClick}
@@ -31,12 +39,12 @@ export const ButtonMedium = ({ text, onClick, disabled }: buttonProps) => {
   );
 };
 
-export const ButtonSmall = ({ icon, text, onClick, disabled }: buttonProps) => {
+export const ButtonSmall = ({ icon, text, onClick }: buttonProps) => {
   return (
     <button
-      className={`w-[109px] h-[40px] text-heading3 rounded-[8px] flex justify-center items-center gap-[8px] ${
-        disabled ? 'text-white bg-gray-6' : 'text-black bg-gray-9'
-      }`}
+      className={
+        'w-fit y-fit text-[1.4rem] px-[1.0rem] py-[.8rem] rounded-[.8rem] flex justify-center items-center gap-[.8rem] text-white bg-gray-9'
+      }
       onClick={onClick}
     >
       {icon}

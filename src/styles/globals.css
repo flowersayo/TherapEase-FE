@@ -19,6 +19,22 @@ body {
   background: var(--background-color);
 }
 
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #acacac;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+/* custom layer */
 @layer components {
   .card {
     background-color: #ffffff;

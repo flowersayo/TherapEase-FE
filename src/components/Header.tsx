@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useRecoilValue } from 'recoil';
-import { isSignedInState, isCounselorState } from '@/store/user';
+import { isSignedInState, isCounselorState } from '@/store/recoil';
 
 import LogoImage from '../assets/Header-logo.png';
 
@@ -61,7 +61,7 @@ const Header = () => {
         </Link>,
         <div className="relative">
           <span
-            className={`${BUTTON_STYLE} cursor-pointer text-gray-4 p-[10px] rounded-[8px] ${
+            className={`${BUTTON_STYLE} cursor-pointer text-gray-4 p-[1.0rem] rounded-[.8rem] ${
               visibleLogout && 'bg-gray-2'
             }`}
             onClick={() => {
@@ -70,7 +70,7 @@ const Header = () => {
           >{`USER_NAME`}</span>
           {visibleLogout && (
             <div
-              className="absolute top-[36px] left-[1px] py-[10px] px-[16px] text-label1 text-gray-6 bg-white border-solid border-[1px] border-gray-3 rounded-[4px] cursor-pointer select-none"
+              className="absolute top-[3.6rem] left-[.1rem] py-[1.0rem] px-[1.6rem] text-label1 text-gray-6 bg-white border-solid border-[.1rem] border-gray-3 rounded-[.4rem] cursor-pointer select-none"
               onClick={() => console.log('로그아웃')}
             >
               로그아웃
@@ -94,14 +94,14 @@ const Header = () => {
   }, [router]);
 
   return (
-    <div className="flex justify-between items-center w-screen h-[58.1px] bg-white shadow-shadow">
+    <div className="fixed top-0 flex justify-between items-center w-screen h-[5.81rem] bg-white shadow-shadow z-50">
       <Link
-        className="flex ml-[229.93px] gap-[9.68px]"
+        className="flex ml-[22.993rem] gap-[.968rem]"
         href={{
           pathname: '/home',
         }}
       >
-        <div className="relative w-[37.4px] h-[37.4px]">
+        <div className="relative w-[3.74rem] h-[3.74rem]">
           <Image
             src={LogoImage}
             alt="TherapEase Logo"
@@ -109,10 +109,10 @@ const Header = () => {
             priority={true}
           />
         </div>
-        <span className="h-fit font-logo text-[28.531px]">TherapEase</span>
+        <span className="h-fit font-logo text-[2.8531rem]">TherapEase</span>
       </Link>
 
-      <div className="flex mr-[214.5px] gap-[36px]">
+      <div className="flex mr-[21.45rem] gap-[3.6rem]">
         {rightMenus?.map((menu: React.ReactNode, index: number) => {
           return <div key={index}>{menu}</div>;
         })}

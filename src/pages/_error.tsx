@@ -3,8 +3,8 @@ import LogoImage from '../assets/Error-logo.png';
 
 const Error = ({ statusCode }: { statusCode: number }) => {
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center pb-[10%] gap-[18.21px]">
-      <div className="relative w-[185px] h-[195px]">
+    <div className="w-full h-full flex flex-col justify-center items-center pb-[10%] gap-[1.821rem]">
+      <div className="relative w-[18.5rem] h-[19.5rem]">
         <Image
           src={LogoImage}
           alt="TherapEase Logo"
