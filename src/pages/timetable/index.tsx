@@ -6,7 +6,7 @@ import Image from 'next/image';
 import CalendarIconSrc from '../../assets/icons/calendar.svg';
 
 const TimeTablePage = () => {
-  const [isEditMode, setIsEditMode] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
   return (
     <div
       className="w-full h-full flex flex-row justify-center items-start 
