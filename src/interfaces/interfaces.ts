@@ -21,3 +21,7 @@ export interface IRecord {
   details2: string | null;
   details3: string | null;
 }
+
+export interface ITimeTable {
+  [key: string]: boolean[];
+}
