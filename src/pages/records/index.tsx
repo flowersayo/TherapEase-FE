@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { useRecoilValue } from 'recoil';
-import { isSignedInState, isCounselorState } from '@/store/recoil';
+import { isSignedInState, isCounselorState } from '@/store/user';
 
-import { clientsListState } from '@/store/recoil';
+import { clientsListState } from '@/store/user';
 
 import LeftBar from '@/components/records/LeftBar';
 import RecordGraph from '@/components/records/RecordGraph';

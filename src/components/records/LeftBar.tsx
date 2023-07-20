@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { useRecoilValue } from 'recoil';
-import { clientsListState } from '@/store/recoil';
+import { clientsListState } from '@/store/user';
 
 import { Iclient } from '@/interfaces/interfaces';
 
