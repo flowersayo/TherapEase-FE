@@ -87,20 +87,32 @@ const ClientsPage = () => {
 
         {/* 내담자 카드 리스트 영역 */}
         {clientsList.length ? (
+          // 내담자 존재
           <div className="w-full flex flex-wrap justify-center gap-[1.6rem] mt-[3.236rem]">
-            {clientsList
-              .filter((client: Iclient) =>
-                client.counseleeName.includes(searchInputValue),
-              )
-              .map((client: Iclient) => {
-                return (
-                  <div className="card">
-                    <ClientCard clientInfo={client} detailMenu={true} />
-                  </div>
-                );
-              })}
+            {clientsList.filter((client: Iclient) =>
+              client.counseleeName.includes(searchInputValue),
+            ).length ? (
+              // 검색어 일치하는 내담자 존재
+              clientsList
+                .filter((client: Iclient) =>
+                  client.counseleeName.includes(searchInputValue),
+                )
+                .map((client: Iclient) => {
+                  return (
+                    <div className="card">
+                      <ClientCard clientInfo={client} detailMenu={true} />
+                    </div>
+                  );
+                })
+            ) : (
+              // 검색어 일치하는 내담자 존재 x
+              <div className="flex flex-col items-center text-heading3 text-gray-5 mt-[22.1rem]">
+                <span>일치하는 내담자가 없습니다.</span>
+              </div>
+            )}
           </div>
         ) : (
+          // 내담자 존재 x
           <div className="flex flex-col items-center text-heading3 text-gray-5 mt-[22.1rem]">
             <span>아직 등록된 내담자가 없습니다.</span>
             <span>내담자 추가를 통해 내담자를 추가하세요!</span>
