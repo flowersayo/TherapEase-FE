@@ -10,8 +10,8 @@ import { Iclient } from '@/interfaces/interfaces';
 interface Props {
   clientInfo: Iclient;
   detailMenu?: boolean;
-  setSelectedClient: (clientInfo: Iclient) => void;
-  setIsDeleteModalVisible: (value: boolean) => void;
+  setSelectedClient?: (clientInfo: Iclient) => void;
+  setIsDeleteModalVisible?: (value: boolean) => void;
 }
 
 const ClientCard = ({
@@ -66,8 +66,8 @@ const ClientCard = ({
     e.stopPropagation();
 
     // TODO - api 연동 - 내담자 삭제
-    setSelectedClient(clientInfo);
-    setIsDeleteModalVisible(true);
+    setSelectedClient ? setSelectedClient(clientInfo) : null;
+    setIsDeleteModalVisible ? setIsDeleteModalVisible(true) : null;
   };
 
   const handleDoneClient = (e: React.MouseEvent) => {

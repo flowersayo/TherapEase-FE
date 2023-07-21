@@ -127,7 +127,7 @@ const ClientsPage = () => {
                 )
                 .map((client: Iclient) => {
                   return (
-                    <div className="card">
+                    <div className="card" key={client.counseleeId}>
                       <ClientCard
                         clientInfo={client}
                         detailMenu={true}
