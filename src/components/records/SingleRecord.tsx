@@ -30,6 +30,7 @@ const SingleRecord = ({ record, idx }: Props) => {
       key={idx}
       className="w-full flex flex-col border-t-[.2rem] border-gray-3"
     >
+      {/* 감정 기록 라인 */}
       <div className="w-full h-[7.1rem] flex items-center">
         <div className="text-body1 ml-[2.4rem] mr-[6.8rem]">
           {parseDateString(Object.keys(record)[0])}
@@ -37,18 +38,6 @@ const SingleRecord = ({ record, idx }: Props) => {
         <div className="flex gap-[2.2rem]">
           {Object.values(record)[0].emotions?.map(
             (emotion: IEmotion, idx: number) => {
-              let bgColorArray = [0, 0, 0, 0, 0];
-              for (let i = 1; i <= emotion.intensity; i++) {
-                bgColorArray[i - 1] = i * 20;
-              }
-
-              const feelingColor =
-                emotion.feeling === -1
-                  ? 'green'
-                  : emotion.feeling === 0
-                  ? 'gray'
-                  : 'blue';
-
               return (
                 <div
                   key={idx}
@@ -59,17 +48,29 @@ const SingleRecord = ({ record, idx }: Props) => {
                   </span>
 
                   <div className="flex gap-[.15rem]">
-                    {bgColorArray.map((color: number, idx: number) => {
-                      const bgColor = color
-                        ? `bg-${feelingColor}-${color}`
-                        : 'bg-gray-2';
-                      return (
-                        <div
-                          key={idx}
-                          className={`w-[1.4rem] h-[1.4rem] rounded-[.3rem] ${bgColor}`}
-                        ></div>
-                      );
-                    })}
+                    {Array(5)
+                      .fill('')
+                      .map((_, idx) => {
+                        const color =
+                          emotion.feeling === -1
+                            ? 'green'
+                            : emotion.feeling === 0
+                            ? 'gray'
+                            : 'blue';
+                        const intensity =
+                          idx - emotion.intensity > 0 ? 0 : 20 * (idx + 1);
+
+                        return (
+                          <div
+                            className={`w-[1.4rem] h-[1.4rem] rounded-[.3rem]`}
+                            style={{
+                              backgroundColor: intensity
+                                ? `var(--${color}-${intensity}`
+                                : '#F7F7F7',
+                            }}
+                          ></div>
+                        );
+                      })}
                   </div>
 
                   <span
