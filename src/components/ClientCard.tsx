@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import { BsList, BsCheckLg } from 'react-icons/bs';
 import { BiSolidPencil } from 'react-icons/bi';
@@ -9,9 +10,18 @@ import { Iclient } from '@/interfaces/interfaces';
 interface Props {
   clientInfo: Iclient;
   detailMenu?: boolean;
+  setSelectedClient?: (clientInfo: Iclient) => void;
+  setIsDeleteModalVisible?: (value: boolean) => void;
 }
 
-const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
+const ClientCard = ({
+  clientInfo,
+  detailMenu = false,
+  setSelectedClient,
+  setIsDeleteModalVisible,
+}: Props) => {
+  const router = useRouter();
+
   const {
     counseleeName,
     counseleeId,
@@ -24,18 +34,10 @@ const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
 
   const [isDetailMenuClicked, setIsDetailMenuClicked] =
     useState<boolean>(false);
+
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
   const [goalInputValue, setGoalInputValue] = useState<string>(goal);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setGoalInputValue(e.currentTarget.value);
-  };
-
-  const handleInputSubmit = () => {
-    // TODO - api 연동
-    setIsEditMode(!isEditMode);
-  };
 
   useEffect(() => {
     setIsDetailMenuClicked(false);
@@ -43,8 +45,45 @@ const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
     setGoalInputValue(goal);
   }, [clientInfo]);
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setGoalInputValue(e.currentTarget.value);
+  };
+
+  const handleInputSubmit = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    // TODO - api 연동
+    setIsEditMode(!isEditMode);
+  };
+
+  const handleDetailMenuClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    setIsDetailMenuClicked(!isDetailMenuClicked);
+  };
+
+  const handleDeleteClient = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    // TODO - api 연동 - 내담자 삭제
+    setSelectedClient ? setSelectedClient(clientInfo) : null;
+    setIsDeleteModalVisible ? setIsDeleteModalVisible(true) : null;
+  };
+
+  const handleDoneClient = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // TODO - api 연동 - 내담자 완료처리
+  };
+
   return (
-    <div className="w-[33.2rem] h-[28.5rem] p-[2.2rem] text-body4 text-gray-9 bg-white rounded-[2.0rem] flex flex-col">
+    <div
+      className={`w-[33.2rem] h-[28.5rem] p-[2.2rem] text-body4 text-gray-9 bg-white rounded-[2.0rem] flex flex-col ${
+        detailMenu && 'cursor-pointer'
+      }`}
+      onClick={() => {
+        !isEditMode && router.push(`/records?id=${counseleeId}`, '/records');
+      }}
+    >
       <div className="flex justify-between">
         <span className="text-body1 mb-[.35rem]">{counseleeName}</span>
         {detailMenu && (
@@ -58,15 +97,25 @@ const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
               size={24.8}
               color={'#DCDCDC'}
               cursor={'pointer'}
-              onClick={() => {
-                setIsDetailMenuClicked(!isDetailMenuClicked);
-              }}
+              onClick={handleDetailMenuClick}
+              style={{ zIndex: 9999 }}
             />
+
             {isDetailMenuClicked && (
               <div className="absolute top-[3.25rem] left-0 flex flex-col items-center px-[1.6rem] py-[1.0rem] text-gray-6 bg-white border-[.1rem] border-gray-3 rounded-[.4rem] shadow-[0_0_0.8rem_0_rgba(0,0,0,0.05)]">
-                <span onClick={() => {}}>내담자 삭제</span>
+                <span
+                  className="w-full rounded-[0.4rem] hover:bg-gray-2"
+                  onClick={handleDeleteClient}
+                >
+                  내담자 삭제
+                </span>
                 <div className="w-[5.6rem] h-[.1rem] my-[.8rem] bg-gray-4"></div>
-                <span onClick={() => {}}>상담 완료</span>
+                <span
+                  className="w-full text-center rounded-[0.4rem] hover:bg-gray-2"
+                  onClick={handleDoneClient}
+                >
+                  상담 완료
+                </span>
               </div>
             )}
           </div>

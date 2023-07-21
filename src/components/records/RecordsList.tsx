@@ -51,7 +51,11 @@ const RecordsList = ({ clientId }: Props) => {
       {/* 감정기록 리스트 영역 */}
       <div>
         {emotionRecordList.map((record: any, idx: number) => {
-          return <SingleRecord record={record} idx={idx} />;
+          return (
+            <div key={idx}>
+              <SingleRecord record={record} idx={idx} />
+            </div>
+          );
         })}
       </div>
     </div>
