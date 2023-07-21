@@ -26,7 +26,7 @@ const ClientsPage = () => {
         {clientsList.map((client: Iclient) => {
           return (
             <div className="card">
-              <ClientCard clientInfo={client} />
+              <ClientCard clientInfo={client} detailMenu={true} />
             </div>
           );
         })}
