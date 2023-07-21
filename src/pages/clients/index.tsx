@@ -9,6 +9,7 @@ import { ButtonLarge, ButtonSmall } from '@/components/Buttons';
 import { IoMdPersonAdd } from 'react-icons/io';
 import { CiSearch } from 'react-icons/ci';
 import { TfiClose } from 'react-icons/tfi';
+import Alert from '@/components/Alert';
 
 const ClientsPage = () => {
   const [clientsList, setClientsList] =
@@ -23,6 +24,19 @@ const ClientsPage = () => {
     counselingTime: '',
     goal: '',
   });
+
+  const [isAlertVisible, setIsAlertVisible] = useState<boolean>(false);
+  const [alertText, setAlertText] = useState<string>('');
+
+  const showAlert = (text: string) => {
+    setIsAlertVisible(true);
+    setAlertText(text);
+
+    setTimeout(() => {
+      setIsAlertVisible(false);
+      setAlertText('');
+    }, 3000);
+  };
 
   // 내담자 검색
   const [searchInputValue, setSearchInputValue] = useState<string>('');
@@ -49,6 +63,7 @@ const ClientsPage = () => {
       // setClientsList()
 
       onCloseAddModal();
+      showAlert(`${selectedClient.counseleeName}님 추가 완료!`); // counseleeName 수정
     } catch (e) {
       setIsAddValidationError(true);
     }
@@ -221,6 +236,9 @@ const ClientsPage = () => {
             </div>
           </div>
         )}
+
+        {/* alert */}
+        {isAlertVisible && <Alert text={alertText} />}
       </div>
     </>
   );
