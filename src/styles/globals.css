@@ -21,18 +21,21 @@
   --green-60: #9af6bf;
   --green-80: #79f3aa;
   --green-100: #2def7b;
+  --green-120: #006026;
 
   --blue-20: #79d7ff33;
   --blue-40: #79d7ff66;
   --blue-60: #79d7ff99;
   --blue-80: #79d7ffcc;
   --blue-100: #61d0ff;
+  --blue-120: #004c6c;
 
   --gray-20: #73737333;
   --gray-40: #73737366;
   --gray-60: #73737399;
   --gray-80: #737373cc;
   --gray-100: #737373;
+  --gray-120: #181818;
 }
 
 body {

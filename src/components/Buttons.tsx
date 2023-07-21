@@ -16,6 +16,7 @@ export const ButtonLarge = ({
         disabled ? 'text-white bg-gray-6' : 'text-black bg-yellow-100'
       }`}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -33,6 +34,7 @@ export const ButtonMedium = ({
         disabled ? 'text-white bg-gray-6' : 'text-black bg-yellow-100'
       }`}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
     </button>

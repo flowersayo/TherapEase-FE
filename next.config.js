@@ -9,12 +9,12 @@ const nextConfig = {
       // },
       {
         source: '/home', // 내담자 홈 (내담자인 경우만 rewrite)
-        has: [
-          // {
-          //   type: 'header',
-          //   key: 'x-authorized', // to be modified
-          // },
-        ],
+        // has: [
+        // {
+        //   type: 'header',
+        //   key: 'x-authorized', // to be modified
+        // },
+        // ],
         destination: '/records',
       },
     ];
