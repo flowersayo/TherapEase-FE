@@ -10,9 +10,16 @@ import { Iclient } from '@/interfaces/interfaces';
 interface Props {
   clientInfo: Iclient;
   detailMenu?: boolean;
+  setSelectedClient: (clientInfo: Iclient) => void;
+  setIsDeleteModalVisible: (value: boolean) => void;
 }
 
-const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
+const ClientCard = ({
+  clientInfo,
+  detailMenu = false,
+  setSelectedClient,
+  setIsDeleteModalVisible,
+}: Props) => {
   const router = useRouter();
 
   const {
@@ -57,7 +64,10 @@ const ClientCard = ({ clientInfo, detailMenu = false }: Props) => {
 
   const handleDeleteClient = (e: React.MouseEvent) => {
     e.stopPropagation();
+
     // TODO - api 연동 - 내담자 삭제
+    setSelectedClient(clientInfo);
+    setIsDeleteModalVisible(true);
   };
 
   const handleDoneClient = (e: React.MouseEvent) => {
