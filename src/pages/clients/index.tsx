@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { clientsListState } from '@/store/recoil';
+import { clientsListState } from '../../store/user';
 
 import { Iclient } from '@/interfaces/interfaces';
 import ClientCard from '@/components/ClientCard';
