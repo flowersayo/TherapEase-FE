@@ -71,6 +71,12 @@ const ClientsPage = () => {
     setIsDeleteModalVisible(false);
   };
 
+  // 내담자 완료
+  const onCompleteClient = (id: string) => {
+    // TODO - 내담자 완료 api 연동
+    // TODO - 내담자 리스트 get api 연동
+  };
+
   return (
     <>
       <div className="relative w-[calc(100%-20.6rem)] h-full mx-auto py-[5.953rem]">
