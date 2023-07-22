@@ -125,6 +125,16 @@ module.exports = {
       boxShadow: {
         shadow: '0px 4px 14px 0px rgba(0, 0, 0, 0.09)',
       },
+      keyframes: {
+        'modal-enter': {
+          from: { opacity: '0', transform: 'translateY(4px) scale(0.95)' },
+          to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        'modal-leave': {
+          from: { opacity: '1', transform: 'translateY(0) scale(1)' },
+          to: { opacity: '0', transform: 'translateY(4px) scale(0.95)' },
+        },
+      },
     },
   },
   plugins: [],
