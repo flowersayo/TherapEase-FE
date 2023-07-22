@@ -4,17 +4,24 @@ import Profile from '@/components/timetable/Profile';
 import TimeTable from '@/components/timetable/TimeTable';
 import Image from 'next/image';
 import CalendarIconSrc from '../../assets/icons/calendar.svg';
+import { useRecoilValue } from 'recoil';
 
+import { isCounselorState } from '@/store/user';
 const TimeTablePage = () => {
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(true);
+
+  const isCounselor = useRecoilValue(isCounselorState);
+
   return (
     <div
       className="w-full h-full flex flex-row justify-center items-start 
     gap-4  mt-[6.6rem] box-border"
     >
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4">
         <Profile editable={isEditMode} />
-        <EditBtn isEditMode={isEditMode} setIsEditMode={setIsEditMode} />
+        {isCounselor && (
+          <EditBtn isEditMode={isEditMode} setIsEditMode={setIsEditMode} />
+        )}
       </div>
       <div
         className="w-[75rem] h-[77.6rem] rounded-2xl bg-white flex
@@ -46,11 +53,9 @@ const EditBtn = ({
     if (isEditMode) {
       // 데이터 저장 요청
       setIsEditMode(false);
-      alert('데이터를 저장합니다.');
     } else {
       // 수정모드 진입
       setIsEditMode(true);
-      alert('수정모드에 진입합니다.');
     }
   };
   const btnText = isEditMode
