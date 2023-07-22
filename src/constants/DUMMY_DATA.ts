@@ -154,8 +154,8 @@ export const DUMMY_EMOTION_RECORDS = {
       '2023-05-23': {
         emotions: [
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            mainEmotion: 'joyful',
+            subEmotion: 'energetic',
             feeling: -1,
             intensity: 5,
           },
@@ -166,8 +166,8 @@ export const DUMMY_EMOTION_RECORDS = {
             intensity: 1,
           },
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            mainEmotion: 'mad',
+            subEmotion: 'hurt',
             feeling: 1,
             intensity: 3,
           },
@@ -181,8 +181,8 @@ export const DUMMY_EMOTION_RECORDS = {
       '2023-05-24': {
         emotions: [
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            mainEmotion: 'mad',
+            subEmotion: 'hurt',
             feeling: -1,
             intensity: 2,
           },
@@ -194,7 +194,7 @@ export const DUMMY_EMOTION_RECORDS = {
           },
           {
             mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            subEmotion: 'ashamed',
             feeling: 1,
             intensity: 2,
           },
@@ -208,7 +208,26 @@ export const DUMMY_EMOTION_RECORDS = {
     },
     {
       '2023-05-25': {
-        emotions: null,
+        emotions: [
+          {
+            mainEmotion: 'sad',
+            subEmotion: 'guilty',
+            feeling: -1,
+            intensity: 4,
+          },
+          {
+            mainEmotion: 'scared',
+            subEmotion: 'rejected',
+            feeling: 0,
+            intensity: 2,
+          },
+          {
+            mainEmotion: 'mad',
+            subEmotion: 'angry',
+            feeling: 1,
+            intensity: 3,
+          },
+        ],
         details1: null,
         details2: null,
         details3: null,
@@ -304,8 +323,8 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
     date: '2023-05-23',
     emotions: [
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'joyful',
+        subEmotion: 'energetic',
         feeling: -1,
         intensity: 5,
       },
@@ -316,8 +335,8 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
         intensity: 1,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'mad',
+        subEmotion: 'hurt',
         feeling: 1,
         intensity: 3,
       },
@@ -327,22 +346,22 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
     date: '2023-05-24',
     emotions: [
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'mad',
+        subEmotion: 'hurt',
         feeling: -1,
-        intensity: 4,
+        intensity: 2,
       },
       {
         mainEmotion: 'sad',
         subEmotion: 'guilty',
         feeling: 0,
-        intensity: 4,
+        intensity: 1,
       },
       {
         mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        subEmotion: 'ashamed',
         feeling: 1,
-        intensity: 3,
+        intensity: 2,
       },
     ],
   },
@@ -356,14 +375,14 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
         intensity: 4,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'scared',
+        subEmotion: 'rejected',
         feeling: 0,
         intensity: 2,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'mad',
+        subEmotion: 'angry',
         feeling: 1,
         intensity: 3,
       },
@@ -464,12 +483,12 @@ export const DUMMY_EMOTION_GRAPH_RECORDS = [
 ];
 
 export const DUMMY_LARGE_EMOTION = [
-  { value: 'sad', label: '슬퍼요' },
-  { value: 'scared', label: '무서워요' },
-  { value: 'powerful', label: '활기차요' },
-  { value: 'peaceful', label: '차분해요' },
-  { value: 'mad', label: '화가 나요' },
-  { value: 'joyful', label: '즐거워요' },
+  { value: 'sad', label: '슬퍼요', labelShort: '슬픔' },
+  { value: 'scared', label: '무서워요', labelShort: '공포' },
+  { value: 'powerful', label: '강해요', labelShort: '강함' },
+  { value: 'peaceful', label: '평화로워요', labelShort: '온화' },
+  { value: 'mad', label: '화가 나요', labelShort: '화남' },
+  { value: 'joyful', label: '기뻐요', labelShort: '기쁨' },
 ];
 
 export const DUMMY_MEDIUM_EMOTION = [

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useRecoilValue } from 'recoil';
-import { isSignedInState, isCounselorState } from '@/store/user';
+import { isSignedInState, isCounselorState } from '@/store/recoil';
 
 import LogoImage from '../assets/Header-logo.png';
 

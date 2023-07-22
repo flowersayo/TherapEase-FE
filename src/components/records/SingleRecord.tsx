@@ -7,6 +7,7 @@ import { parseDateString } from '@/utils/parseDate';
 import { IEmotion, IRecord } from '@/interfaces/interfaces';
 
 import { EMOTIONS, FEELING } from '@/constants/records';
+import { DUMMY_MEDIUM_EMOTION } from '@/constants/DUMMY_DATA';
 
 interface Props {
   record: IRecord;
@@ -44,7 +45,14 @@ const SingleRecord = ({ record, idx }: Props) => {
                   className="h-[3.8rem] flex items-center px-[1.5rem] py-[.8rem] border-[.1rem] border-gray-3 rounded-[.4rem] gap-[.7rem]"
                 >
                   <span className="px-[.6rem] py-[.5rem] text-label1 border-transparent rounded-[.4rem] bg-yellow-100">
-                    {emotion.mainEmotion}
+                    {
+                      // TODO - 로직 개선
+                      DUMMY_MEDIUM_EMOTION.find(
+                        (emo) => emo.large === emotion.mainEmotion,
+                      )?.medium.find(
+                        ({ value }) => value === emotion.subEmotion,
+                      )?.label
+                    }
                   </span>
 
                   <div className="flex gap-[.15rem]">

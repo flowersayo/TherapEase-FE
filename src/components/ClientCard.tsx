@@ -34,7 +34,6 @@ const ClientCard = ({
 
   const [isDetailMenuClicked, setIsDetailMenuClicked] =
     useState<boolean>(false);
-
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
   const [goalInputValue, setGoalInputValue] = useState<string>(goal);

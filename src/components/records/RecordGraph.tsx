@@ -2,7 +2,10 @@ import { parseDateString } from '@/utils/parseDate';
 
 import { IEmotion, IGraphRecord } from '@/interfaces/interfaces';
 
-import { DUMMY_EMOTION_GRAPH_RECORDS } from '@/constants/DUMMY_DATA';
+import {
+  DUMMY_EMOTION_GRAPH_RECORDS,
+  DUMMY_LARGE_EMOTION,
+} from '@/constants/DUMMY_DATA';
 
 interface Props {
   clientId: string;
@@ -40,14 +43,13 @@ const RecordGraph = ({ clientId }: Props) => {
                   {emotions.map((emotion: IEmotion, idx: number) => {
                     const { mainEmotion, intensity, feeling } = emotion;
 
-                    return (
-                      <div
-                        key={idx}
-                        className="flex flex-col-reverse gap-[0.2rem]"
-                      >
-                        <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-yellow-100">
-                          {mainEmotion ?? '-'}
-                        </span>
+                  return (
+                    <div className="flex flex-col-reverse gap-[0.2rem]">
+                      <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-yellow-100">
+                        {DUMMY_LARGE_EMOTION.find(
+                          ({ value }) => value === mainEmotion,
+                        )?.labelShort ?? '-'}
+                      </span>
 
                         {Array(intensity)
                           .fill('')
