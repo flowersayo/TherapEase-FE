@@ -69,7 +69,7 @@ export default RecordsPage;
 
 const LogCard = ({ onClick }: any) => {
   return (
-    <div className="w-[33.2rem] h-[28.5rem] text-gray-8 text-body4 bg-white flex flex-col justify-center items-center">
+    <div className="w-[33.2rem] h-[28.5rem] text-gray-8 text-body4 bg-white rounded-[2rem] flex flex-col justify-center items-center select-none">
       <div className="relative w-[10.8rem] h-[10.8rem] mb-[1.2rem]">
         <Image src={logImage} alt="Log your Emotion" fill={true} />
       </div>

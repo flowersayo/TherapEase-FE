@@ -62,6 +62,7 @@ const SingleRecord = ({ record, idx }: Props) => {
 
                         return (
                           <div
+                            key={idx}
                             className={`w-[1.4rem] h-[1.4rem] rounded-[.3rem]`}
                             style={{
                               backgroundColor: intensity

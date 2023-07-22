@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+
 
 import {
   EmotionAddCard,
@@ -14,6 +18,7 @@ import {
   FeelingCard,
 } from '@/components/log/EmotionSelectCard';
 import EmotionCard from '@/components/log/EmotionCard';
+import OptionalInput from '@/components/log/OptionalInput';
 import { ButtonMedium } from '@/components/Buttons';
 
 import { IEmotion } from '@/interfaces/interfaces';
@@ -46,6 +51,13 @@ const RecordsCreatePage = () => {
   const [selectedFeelingIntensity, setSelectedFeelingIntensity] =
     useState<number>(0); // 긍부모 감정 점수
 
+  const [isOptionalInputsVisible, setIsOptionalInputVisible] =
+    useState<boolean>(false);
+
+  const [datailInputValue1, setDetailInputValue1] = useState<string>(''); // 선택 입력
+  const [datailInputValue2, setDetailInputValue2] = useState<string>('');
+  const [datailInputValue3, setDetailInputValue3] = useState<string>('');
+
   useEffect(() => {
     setSelectedMediumEmotion(null);
 
@@ -69,6 +81,7 @@ const RecordsCreatePage = () => {
     }
   }, [selectedMediumEmotion]);
 
+  // TODO - 이름 명확히 수정
   const handleSubmitEmotion = () => {
     const newEmotion: IEmotion = {
       mainEmotion: selectedLargeEmotion?.value ?? '',
@@ -95,6 +108,17 @@ const RecordsCreatePage = () => {
     setEmotionList(newEmotionList);
   };
 
+  // TODO - 이름 명확히 수정
+  const handleSubmitEmotionLog = () => {
+    // TODO - 감정 세부 기록 post api 연동
+    console.log({
+      emotions: emotionList,
+      details1: datailInputValue1,
+      details2: datailInputValue2,
+      details3: datailInputValue3,
+    });
+  };
+
   return (
     <div className="w-[calc(100%-20.6rem)] h-full mx-auto py-[5.953rem]">
       {/* 페이지 헤더 영역 */}
@@ -107,12 +131,15 @@ const RecordsCreatePage = () => {
           해당 기록은 상담사가 읽고 다음 상담에 활용될 수 있습니다.
         </span>
       </div>
-
       {/* 감정 카드 영역 */}
       <div className="mt-[2.3rem] flex justify-center gap-[1.6rem]">
-        {emotionList.map((emotion: IEmotion) => {
+        {emotionList.map((emotion: IEmotion, idx: number) => {
           return (
-            <EmotionCard emotion={emotion} onDelete={handleDeleteEmotionCard} />
+            <EmotionCard
+              key={idx}
+              emotion={emotion}
+              onDelete={handleDeleteEmotionCard}
+            />
           );
         })}
 
@@ -120,16 +147,16 @@ const RecordsCreatePage = () => {
           if (emotionList.length === idx) {
             return (
               <EmotionAddCard
+                key={idx}
                 isInProgress={isInProgress}
                 setIsInProgress={setIsInProgress}
               />
             );
           } else if (emotionList.length <= idx) {
-            return <EmotionAddCardDisabled />;
+            return <EmotionAddCardDisabled key={idx} />;
           }
         })}
       </div>
-
       {isInProgress && (
         <>
           {/* 감정 기록 질문 */}
@@ -193,6 +220,66 @@ const RecordsCreatePage = () => {
               disabled={selectedFeelingIntensity === 0}
             />
           </div>
+        </>
+      )}
+
+      {!isInProgress && emotionList.length !== 0 && (
+        <>
+          <div
+            className="flex w-fit px-[3rem] py-[1rem] mx-auto mt-[4.1rem] justify-center items-center bg-gray-9 rounded-[2rem] cursor-pointer select-none transition ease-in-out hover:-translate-y-1"
+            onClick={() => {
+              setIsOptionalInputVisible(!isOptionalInputsVisible);
+            }}
+          >
+            <span className="text-body2 text-gray-1 mr-[0.8rem]">
+              더 하고 싶은 이야기가 있나요?
+            </span>
+            <span className="text-label1 text-yellow-100 mr-[0.3rem]">
+              추가 질문 보기
+            </span>
+            {isOptionalInputsVisible ? (
+              <BsChevronUp size={12} color="#FDF2B4" />
+            ) : (
+              <BsChevronDown size={12} color="#FDF2B4" />
+            )}
+          </div>
+
+          {/* 선택 입력 영역 // TODO - 레이아웃 덕지덕지 고치기 */}
+          {isOptionalInputsVisible && (
+            <div className="w-[calc(100vw+20.6rem)] flex flex-col items-center gap-[14.8rem] bg-gray-3 pt-[5.8rem] pb-[8.55rem] pr-[20.6rem] mt-[2.1rem] ml-[-10.3rem]">
+              <OptionalInput
+                question={<span>어떤 상황이었나요?</span>}
+                inputValue={datailInputValue1}
+                setInputValue={setDetailInputValue1}
+              />
+              <OptionalInput
+                question={<span>어떤 생각을 했나요?</span>}
+                inputValue={datailInputValue2}
+                setInputValue={setDetailInputValue2}
+              />
+              <OptionalInput
+                question={
+                  <>
+                    <div>부정적인 감정이 있었다면,</div>
+                    <div>어떤 방식으로 감정을 다스렸나요?</div>
+                  </>
+                }
+                inputValue={datailInputValue3}
+                setInputValue={setDetailInputValue3}
+              />
+            </div>
+          )}
+
+          <Link
+            className="flex w-fit mx-auto mt-[20rem]"
+            href={{ pathname: '/records' }}
+            as={'/home'}
+          >
+            <ButtonMedium
+              text="감정 기록 끝내기"
+              onClick={handleSubmitEmotionLog}
+            />
+          </Link>
         </>
       )}
     </div>

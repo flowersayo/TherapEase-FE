@@ -34,9 +34,10 @@ export const EmotionSelectCard = ({
 }: EmotionSelectCardProps) => {
   return (
     <div className="w-[33.2rem] h-fit bg-white px-[1.2rem] py-[1rem] rounded-[2rem] flex flex-wrap gap-[0.8rem]">
-      {emotionList?.map((emotion) => {
+      {emotionList?.map((emotion, idx) => {
         return (
           <div
+            key={idx}
             onClick={() => {
               selectedEmotion === emotion
                 ? setSelectedEmotion(null)
@@ -169,6 +170,7 @@ export const FeelingCard = ({
             return (
               <div
                 id={String(intensity / 20)}
+                key={intensity}
                 className={`w-[3.882rem] h-[3.882rem] border rounded-[0.863rem] cursor-pointer`}
                 style={{
                   backgroundColor: `var(--${color}-${intensity})`,

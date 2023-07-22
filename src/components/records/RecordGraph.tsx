@@ -26,50 +26,59 @@ const RecordGraph = ({ clientId }: Props) => {
 
       {/* 그래프 영역 */}
       <div className="h-[calc(100%-2.9rem)] flex justify-start items-end gap-[0.9rem]">
-        {DUMMY_EMOTION_GRAPH_RECORDS.map((record: IGraphRecord) => {
-          const date = parseDateString(record.date);
-          const emotions = record.emotions;
+        {DUMMY_EMOTION_GRAPH_RECORDS.map(
+          (record: IGraphRecord, idx: number) => {
+            const date = parseDateString(record.date);
+            const emotions = record.emotions;
 
-          return (
-            <div className="flex flex-col items-center gap-[1.5rem]">
-              <div className="flex gap-[0.2rem]">
-                {emotions.map((emotion: IEmotion) => {
-                  const { mainEmotion, intensity, feeling } = emotion;
+            return (
+              <div
+                key={idx}
+                className="flex flex-col items-center gap-[1.5rem]"
+              >
+                <div className="flex gap-[0.2rem]">
+                  {emotions.map((emotion: IEmotion, idx: number) => {
+                    const { mainEmotion, intensity, feeling } = emotion;
 
-                  return (
-                    <div className="flex flex-col-reverse gap-[0.2rem]">
-                      <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-yellow-100">
-                        {mainEmotion ?? '-'}
-                      </span>
+                    return (
+                      <div
+                        key={idx}
+                        className="flex flex-col-reverse gap-[0.2rem]"
+                      >
+                        <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-yellow-100">
+                          {mainEmotion ?? '-'}
+                        </span>
 
-                      {Array(intensity)
-                        .fill('')
-                        .map((_, idx) => {
-                          const color =
-                            feeling === -1
-                              ? 'green'
-                              : feeling === 0
-                              ? 'gray'
-                              : 'blue';
-                          const intensity = 20 * (idx + 1);
+                        {Array(intensity)
+                          .fill('')
+                          .map((_, idx) => {
+                            const color =
+                              feeling === -1
+                                ? 'green'
+                                : feeling === 0
+                                ? 'gray'
+                                : 'blue';
+                            const intensity = 20 * (idx + 1);
 
-                          return (
-                            <div
-                              className={`w-[2.6rem] h-[2.6rem] rounded-[0.359rem]`}
-                              style={{
-                                backgroundColor: `var(--${color}-${intensity})`,
-                              }}
-                            ></div>
-                          );
-                        })}
-                    </div>
-                  );
-                })}
+                            return (
+                              <div
+                                key={idx}
+                                className={`w-[2.6rem] h-[2.6rem] rounded-[0.359rem]`}
+                                style={{
+                                  backgroundColor: `var(--${color}-${intensity})`,
+                                }}
+                              ></div>
+                            );
+                          })}
+                      </div>
+                    );
+                  })}
+                </div>
+                <span className="text-body3 text-gray-9">{date}</span>
               </div>
-              <span className="text-body3 text-gray-9">{date}</span>
-            </div>
-          );
-        })}
+            );
+          },
+        )}
       </div>
     </div>
   );

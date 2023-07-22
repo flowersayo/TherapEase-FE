@@ -54,6 +54,7 @@ const EmotionCard = ({
 
             return (
               <div
+                key={val}
                 className="w-[1.8rem] h-[1.8rem] rounded-[0.4rem]"
                 style={{
                   backgroundColor:

@@ -15,6 +15,13 @@ export interface IEmotion {
   intensity: number;
 }
 
+export interface IEmotionFull {
+  emotions: IEmotion;
+  details1: string | null;
+  details2: string | null;
+  details3: string | null;
+}
+
 export interface IRecord {
   date: string;
   emotions: IEmotion[];
