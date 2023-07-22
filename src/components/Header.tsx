@@ -2,51 +2,28 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import LoginModal from './modals/LoginModal';
-import { getUser } from '@/hooks/useUser';
+
 import { useRecoilValue } from 'recoil';
 import { isSignedInState, isCounselorState } from '@/store/recoil';
 
 import LogoImage from '../assets/Header-logo.png';
-import { IUser } from '@/interfaces/interfaces';
-import { clearUser } from '@/hooks/useUser';
-import { useRecoilState } from 'recoil';
 
 const Header = () => {
   const router = useRouter();
-  const user: IUser = getUser();
 
-  const [isCounselor, setIsCounselor] = useRecoilState<boolean | null>(
-    isCounselorState,
-  );
-  const [isSignedIn, setIsSignedIn] = useRecoilState<boolean>(isSignedInState);
+  const isSignedIn = useRecoilValue<boolean>(isSignedInState); // 로그인 여부
+  const isCounselor = useRecoilValue<boolean | null>(isCounselorState); // 상담자,내담자 여부
 
   const [visibleLogout, setVisibleLogout] = useState<boolean>(false); // 로그아웃 버튼 표시 여부
 
   const BUTTON_STYLE = `h-fit text-body2 select-none`;
 
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
-  const handleOnClickLogin = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  const handleOnClickProfile = () => {
-    setVisibleLogout((prev) => !prev);
-  };
-
-  const logout = () => {
-    clearUser();
-
-    setIsSignedIn(false);
-    router.push('/');
-  };
   const rightMenus: React.ReactNode[] = isSignedIn
     ? (isCounselor
         ? [
             <Link
               href={{
-                pathname: '/clients',
+                pathname: '/home',
               }}
               className={`${BUTTON_STYLE} ${
                 router.pathname === '/clients' || router.pathname === '/records'
@@ -60,7 +37,7 @@ const Header = () => {
         : [
             <Link
               href={{
-                pathname: '/records',
+                pathname: '/home',
               }}
               className={`${BUTTON_STYLE} ${
                 router.pathname === '/records' || router.pathname === '/log'
@@ -87,14 +64,14 @@ const Header = () => {
             className={`${BUTTON_STYLE} cursor-pointer text-gray-4 p-[1.0rem] rounded-[.8rem] ${
               visibleLogout && 'bg-gray-2'
             }`}
-            onClick={handleOnClickProfile}
-          >
-            {user?.name}
-          </span>
+            onClick={() => {
+              setVisibleLogout(!visibleLogout);
+            }}
+          >{`USER_NAME`}</span>
           {visibleLogout && (
             <div
               className="absolute top-[3.6rem] left-[.1rem] py-[1.0rem] px-[1.6rem] text-label1 text-gray-6 bg-white border-solid border-[.1rem] border-gray-3 rounded-[.4rem] cursor-pointer select-none"
-              onClick={logout}
+              onClick={() => console.log('로그아웃')}
             >
               로그아웃
             </div>
@@ -107,7 +84,6 @@ const Header = () => {
             pathname: '/', // TODO - 로그인모달창
           }}
           className={`${BUTTON_STYLE} text-gray-9`}
-          onClick={handleOnClickLogin}
         >
           로그인 / 회원가입
         </Link>,
@@ -118,13 +94,7 @@ const Header = () => {
   }, [router]);
 
   return (
-    <div className="fixed top-0 flex justify-between items-center w-screen h-[5.81rem] bg-white shadow-shadow z-10">
-      {
-        /*코드입력모달*/ isLoginModalOpen && (
-          <LoginModal closeModal={() => setIsLoginModalOpen(false)} />
-        )
-      }
-
+    <div className="fixed top-0 flex justify-between items-center w-screen h-[5.81rem] bg-white shadow-shadow z-50">
       <Link
         className="flex ml-[22.993rem] gap-[.968rem]"
         href={{
