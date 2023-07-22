@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 
 import { isCounselorState } from '@/store/user';
 const TimeTablePage = () => {
-  const [isEditMode, setIsEditMode] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const isCounselor = useRecoilValue(isCounselorState);
 
