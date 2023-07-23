@@ -36,8 +36,6 @@ const LandingPage = () => {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry.isIntersecting);
-
         const target: HTMLElement = entry.target as HTMLElement;
 
         const targetName = target.dataset.name; // data-name 값을 가져옴
@@ -54,24 +52,20 @@ const LandingPage = () => {
             if (entry.isIntersecting) {
               // entry.target.classList.add('animate__fadeIn');
               const children = entry.target.children;
-              console.log(children);
+
               const iconElement = children[0] as HTMLElement;
               const titleElement = children[1] as HTMLElement;
               const textElement = children[2] as HTMLElement;
-
-              console.log(typeof iconElement);
 
               iconElement.classList.add('animate__fadeIn');
               titleElement.classList.add('animate__fadeIn');
               textElement.classList.add('animate__fadeIn');
             } else {
               const children = entry.target.children;
-              console.log(children);
+
               const iconElement = children[0] as HTMLElement;
               const titleElement = children[1] as HTMLElement;
               const textElement = children[2] as HTMLElement;
-
-              console.log(typeof iconElement);
 
               iconElement.classList.remove('animate__fadeIn');
               titleElement.classList.remove('animate__fadeIn');
@@ -89,12 +83,12 @@ const LandingPage = () => {
 
               const leftImg = imageGroupElement.children[0] as HTMLElement;
               const rightImg = imageGroupElement.children[1] as HTMLElement;
-              console.log(leftImg);
+
               leftImg.classList.add('animate__fadeInLeft');
               rightImg.classList.add('animate__fadeInRight');
             } else {
               const children = entry.target.children;
-              console.log(children);
+
               const imageGroupElement = children[2] as HTMLElement;
 
               const leftImg = imageGroupElement.children[0];
@@ -132,7 +126,7 @@ const LandingPage = () => {
           <LoginModal closeModal={() => setIsLoginModalOpen(false)} />
         )
       }
-      <div className="w-full h-[87.7rem] bg-[#252525] flex justify-center items-center">
+      <div className="w-full min-w-[100rem] h-[87.7rem] bg-[#252525] flex justify-center items-center">
         <div
           className="flex flex-row items-center mr-[-5%] wow fadeIn"
           data-wow-duration="2s"
@@ -186,7 +180,7 @@ const LandingPage = () => {
         ref={aboutUsRef}
         data-name={'about-us'}
         className="w-full h-[36.8rem] bg-gray-9 flex flex-col
-       justify-center items-center gap-[1.8rem] animate__animated"
+       justify-center items-center gap-[1.8rem] animate__animated "
       >
         <Image
           className="animate__animated"
