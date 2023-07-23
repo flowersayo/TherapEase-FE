@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { API_BASE_SERVER_URL } from '@/constants/Config';
 import { USER_LOCALSTORAGE_KEY } from '@/constants/constants';
 import { IUser } from '@/interfaces/interfaces';
 
@@ -14,7 +13,7 @@ const AxiosModule = () => {
     }
   }
   return axios.create({
-    baseURL: API_BASE_SERVER_URL,
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
       Authorization: `bearer ${token}`,
