@@ -1,5 +1,5 @@
 // Landing Page
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ButtonLarge } from '@/components/Buttons';
 import MainIllustrationSrc from '../assets/images/main-illustration.svg';
@@ -9,6 +9,7 @@ import CounseleeManagementSrc from '../assets/images/counselee-management.svg';
 import EmotionGraphSrc from '../assets/images/emtion-graph.svg';
 import EmotionCreateSrc from '../assets/images/emotion-create.svg';
 import TimeTableSrc from '../assets/images/timetable.svg';
+import LoginModal from '@/components/modals/LoginModal';
 
 const LandingPage = () => {
   const bacgkroundRef = useRef<HTMLDivElement | null>(null);
@@ -16,6 +17,7 @@ const LandingPage = () => {
   const theTherapistRef = useRef<HTMLDivElement | null>(null);
   const theClientRef = useRef<HTMLImageElement | null>(null);
   const startBtnRef = useRef<HTMLImageElement | null>(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const observeList = [
     bacgkroundRef,
@@ -24,6 +26,7 @@ const LandingPage = () => {
     theClientRef,
     startBtnRef,
   ];
+
   useEffect(() => {
     const options = {
       root: null, // viewport
@@ -121,8 +124,14 @@ const LandingPage = () => {
       observer.disconnect(); // 컴포넌트 언마운트 시 관찰 종료
     };
   }, []);
+
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      {
+        /*코드입력모달*/ isLoginModalOpen && (
+          <LoginModal closeModal={() => setIsLoginModalOpen(false)} />
+        )
+      }
       <div className="w-full h-[87.7rem] bg-[#252525] flex justify-center items-center">
         <div
           className="flex flex-row items-center mr-[-5%] wow fadeIn"
@@ -140,7 +149,7 @@ const LandingPage = () => {
             </div>
             <ButtonLarge
               text={'지금 시작하기'}
-              onClick={() => console.log('click')}
+              onClick={() => setIsLoginModalOpen(true)}
               disabled={false}
             />
           </div>
@@ -261,7 +270,7 @@ const LandingPage = () => {
         >
           <ButtonLarge
             text={'지금 시작하기'}
-            onClick={() => console.log('click')}
+            onClick={() => setIsLoginModalOpen(true)}
             disabled={false}
           />
         </div>

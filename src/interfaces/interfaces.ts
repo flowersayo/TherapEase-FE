@@ -8,6 +8,15 @@ export interface Iclient {
   goal: string;
 }
 
+export interface IUser {
+  id: number;
+  name: string;
+  code: string;
+  role: string;
+  refresh: string;
+  access: string;
+}
+
 export interface IEmotion {
   mainEmotion: string;
   subEmotion: string;

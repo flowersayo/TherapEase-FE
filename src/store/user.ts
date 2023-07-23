@@ -5,7 +5,7 @@ import { DUMMY_CLIENTS_LIST } from '@/constants/DUMMY_DATA';
 
 export const isSignedInState = atom<boolean>({
   key: 'isSignedInState',
-  default: true,
+  default: false,
 });
 
 export const isCounselorState = atom<boolean | null>({
