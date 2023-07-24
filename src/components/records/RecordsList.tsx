@@ -12,7 +12,9 @@ interface Props {
 
 const RecordsList = ({ clientId }: Props) => {
   const [emotionRecordList, setEmotionRecordList] = useState<any>([]);
+
   const [page, setPage] = useState<number>(1);
+  const [totalCount, setTotalCount] = useState<number>(22); // 전체 리스트 개수
 
   useEffect(() => {
     fetchEmotionRecords();
@@ -26,6 +28,18 @@ const RecordsList = ({ clientId }: Props) => {
     setPage(page);
   };
 
+  const handleLeftPageClick = () => {
+    if (page !== 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleRightPageClick = () => {
+    if (page !== Math.ceil(totalCount / 7)) {
+      setPage(page + 1);
+    }
+  };
+
   return (
     <div className="w-[102.5rem] bg-white rounded-[2rem]">
       {/* 페이지네이션 영역 */}
@@ -34,18 +48,14 @@ const RecordsList = ({ clientId }: Props) => {
           size={14}
           color={page === 1 ? '#DCDCDC' : '#737373'}
           cursor={'pointer'}
-          onClick={() => setPage(page - 1)}
+          onClick={handleLeftPageClick}
         />
         <span className="text-body1 text-gray-9 mx-[1.5rem]">{page}</span>
         <BsChevronRight
           size={14}
-          color={
-            page === Math.ceil(emotionRecordList.length / 7)
-              ? '#737373'
-              : '#DCDCDC'
-          }
+          color={page === Math.ceil(totalCount / 7) ? '#DCDCDC' : '#737373'}
           cursor={'pointer'}
-          onClick={() => setPage(page + 1)}
+          onClick={handleRightPageClick}
         />
       </div>
       {/* 감정기록 리스트 영역 */}

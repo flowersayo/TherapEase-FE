@@ -24,7 +24,6 @@ const LeftBar = () => {
               isSelected ? 'bg-gray-4' : 'bg-transparent text-gray-4'
             }`}
             href={{ pathname: '/records', query: { id: client.counseleeId } }}
-            as={'/records'}
           >
             <span className="text-body2 cursor-pointer">
               {client.counseleeName}
