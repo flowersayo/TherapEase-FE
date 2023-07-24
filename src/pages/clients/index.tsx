@@ -10,6 +10,7 @@ import { IoMdPersonAdd } from 'react-icons/io';
 import { CiSearch } from 'react-icons/ci';
 import { TfiClose } from 'react-icons/tfi';
 import Alert from '@/components/Alert';
+import ConfirmModal from '@/components/modals/ConfirmModal';
 
 const ClientsPage = () => {
   const [clientsList, setClientsList] =
@@ -205,36 +206,24 @@ const ClientsPage = () => {
 
         {/* 내담자 삭제 모달 */}
         {isDeleteModalVisible && (
-          <div className="absolute top-0 left-[-10.3rem] w-screen h-full bg-[#0000004d] z-[10000]">
-            <div className="absolute top-[calc(50vh-17.7rem)] left-[calc(50vw-21.65rem)] bg-white px-[4.7rem] py-[3.25rem] rounded-[2rem] flex flex-col items-center">
-              <span className="text-heading3 text-gray-9 mb-[3.1rem]">
-                내담자 삭제
-              </span>
-              <span className="text-heading2 text-gray-9">
-                {selectedClient?.counseleeName}
-              </span>
-              <span className="text-body2 text-gray-9">
-                내담자에 대한 정보가 모두 사라집니다!
-              </span>
-              <span className="text-body2 text-gray-9 mb-[3.1rem]">
-                정말 삭제하시겠습니까?
-              </span>
-              <button
-                className={`w-[33.9rem] h-[4.8rem] text-body1 rounded-[4.8rem] text-red-100 hover:bg-red-10`}
-                onClick={() => {
-                  onDeleteClient(selectedClient?.counseleeId);
-                }}
-              >
-                네, 삭제하겠습니다.
-              </button>
-              <button
-                className={`w-[33.9rem] h-[4.8rem] text-body1 rounded-[4.8rem] text-gray-5 hover:bg-gray-2`}
-                onClick={() => setIsDeleteModalVisible(false)}
-              >
-                아니오, 삭제하지 않겠습니다.
-              </button>
-            </div>
-          </div>
+          <ConfirmModal
+            title="내담자 삭제"
+            content={
+              <>
+                <span className="text-heading2">
+                  {selectedClient?.counseleeName}
+                </span>
+                <div>내담자에 대한 정보가 모두 사라집니다!</div>
+                <div>정말 삭제하시겠습니까?</div>
+              </>
+            }
+            confirmText="네, 삭제하겠습니다."
+            cancleText="아니오, 삭제하지 않겠습니다."
+            onConfirm={() => {
+              onDeleteClient(selectedClient?.counseleeId);
+            }}
+            onCancle={() => setIsDeleteModalVisible(false)}
+          />
         )}
 
         {/* alert */}

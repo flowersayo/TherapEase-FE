@@ -124,7 +124,9 @@ export const FeelingCard = ({
   };
 
   const handleFeelingNumberClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    setSelectedFeelingIntensity(Number(e.currentTarget.id));
+    if (selectedFeeling !== null) {
+      setSelectedFeelingIntensity(Number(e.currentTarget.id));
+    }
   };
 
   return (
@@ -166,6 +168,9 @@ export const FeelingCard = ({
         <div className="flex gap-[.38rem]">
           {[20, 40, 60, 80, 100].map((intensity) => {
             const isSelected = selectedFeelingIntensity === intensity / 20;
+            const isNotInRange =
+              selectedFeelingIntensity &&
+              selectedFeelingIntensity < intensity / 20;
 
             return (
               <div
@@ -173,7 +178,9 @@ export const FeelingCard = ({
                 key={intensity}
                 className={`w-[3.882rem] h-[3.882rem] border rounded-[0.863rem] cursor-pointer`}
                 style={{
-                  backgroundColor: `var(--${color}-${intensity})`,
+                  backgroundColor: isNotInRange
+                    ? '#F7F7F7'
+                    : `var(--${color}-${intensity})`,
                   borderColor: `${
                     isSelected ? `var(--${color}-120)` : 'transparent'
                   }`,

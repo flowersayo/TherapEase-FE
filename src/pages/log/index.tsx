@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
-
 import {
   EmotionAddCard,
   EmotionAddCardDisabled,
@@ -78,6 +77,8 @@ const RecordsCreatePage = () => {
       selectedMediumEmotion !== null
     ) {
       setCurrentProcess(2);
+      setSelectedFeeling(null);
+      setSelectedFeelingIntensity(0);
     }
   }, [selectedMediumEmotion]);
 
