@@ -15,7 +15,7 @@ const TimeTablePage = () => {
   return (
     <div
       className="w-full h-full flex flex-row justify-center items-start 
-    gap-4  mt-[6.6rem] box-border"
+    gap-4  mt-[6.6rem] mb-[12.7rem] box-border"
     >
       <div className="flex flex-col gap-4">
         <Profile editable={isEditMode} />
@@ -28,11 +28,11 @@ const TimeTablePage = () => {
         flex-col  py-[2.6rem] px-[5rem]"
       >
         <div className="flex flex-col justify-center mb-[2.5rem]">
-          <span className="text-heading4 text-black">상담 가능 시간</span>
+          <span className="text-heading3 text-black">상담 가능 시간</span>
           <span className="text-body3 text-gray-5">
             실시간 예약 가능 시간과 차이가 있을 수 있습니다.
           </span>
-          <span className="text-body3 text-gray-5">
+          <span className="text-body4 text-gray-5">
             5월 24일 05시 32분 업데이트
           </span>
         </div>

@@ -15,7 +15,6 @@ export default function TimeTable({ isEditMode }: { isEditMode: boolean }) {
     </div>
   );
 }
-
 const THead = () => {
   const days = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -30,7 +29,7 @@ const THead = () => {
   return (
     <div className="grid pb-[0.95rem] grid-cols-7 w-[63rem] border-b-[1px] ">
       {days.map((day) => (
-        <span className="table-cell p-1 align-inherit text-center">
+        <span key={day} className="table-cell p-1 align-inherit text-center">
           <span style={tableHeadTextStyle}>{day}</span>
         </span>
       ))}
@@ -53,8 +52,12 @@ const TBody = ({ disabled }: { disabled: boolean }) => {
   const overlayStyle = disabled ? 'z-2 pointer-events-none' : '';
   return (
     <div className={`grid w-[63rem] grid-cols-7 ${overlayStyle}`}>
-      {days_en.map((day_en) => (
-        <TimeTableCol day={day_en} avaliability={timeTableData[day_en]} />
+      {days_en.map((day_en, idx) => (
+        <TimeTableCol
+          key={day_en + idx}
+          day={day_en}
+          avaliability={timeTableData[day_en]}
+        />
       ))}
     </div>
   );
@@ -66,7 +69,7 @@ const TimeBar = () => {
   return (
     <div className="flex flex-col items-end pr-[1rem] mt-[3.1rem]">
       {hourData.map((hour) => (
-        <div className="h-[3.8rem] ">
+        <div key={hour} className="h-[3.8rem] ">
           <span className="text-body-4 text-gray-4 text-start self-start">{`${hour}:00`}</span>
         </div>
       ))}
