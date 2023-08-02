@@ -51,7 +51,9 @@ export default function LoginModal({ closeModal }: LoginModalProps) {
       onSuccess: (data: IUser, variables, context) => {
         console.log('login success', data, variables, context);
         closeModal();
-        setUser(data); //user 전역상태 업데이트
+
+        const partnerId = data.accountId; //연결된 상담사
+        setUser({ ...data, partnerId }); //user 전역상태 업데이트
         saveToken(data.access, data.refresh); // 새로 고침 시 로그인 상태 유지를 위함
 
         const accessToken = data.access;

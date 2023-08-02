@@ -1,16 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { CSSProperties } from 'react';
+import LoadingSpinnerSrc from '../../assets/spinner.gif';
 import TimeTableCol from './TimeTableCol';
 import { useRecoilState } from 'recoil';
 import { timeTableState } from '@/store/timetable';
+import { getTimetable } from '@/hooks/queries/timetable';
+import { useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/constants/queryKeys';
+import { ITimeTable } from '@/interfaces/interfaces';
+import { useRouter } from 'next/router';
 
 export default function TimeTable({ isEditMode }: { isEditMode: boolean }) {
+  const router = useRouter();
+  const { id: counselor_id } = router.query;
+  const [timeTableData, setTimeTableData] = useRecoilState(timeTableState);
+
+  const TIMETABLE_UPDATE_INTERVAL = 60; // seconds
+  const { data, isLoading, isLoadingError } = useQuery(
+    [queryKeys.timetable],
+    () => getTimetable(counselor_id),
+    {
+      enabled: router.isReady,
+      onSuccess: (data) => {
+        console.log('timetable onsuccess', data);
+        setTimeTableData(data.data);
+      },
+      onError: (error) => {
+        console.log(error);
+      },
+      refetchInterval: 1000 * TIMETABLE_UPDATE_INTERVAL, // 5초 (밀리초 단위)
+    },
+  );
+
+  if (isLoading) {
+    return (
+      <div className="w-[100%] h-[100%] flex justify-center items-center">
+        <Image
+          src={LoadingSpinnerSrc}
+          alt="Sample GIF"
+          width={100}
+          height={100}
+        />
+      </div>
+    );
+  }
+
+  if (isLoadingError) {
+    return (
+      <div className="w-[100%] h-[100%] flex justify-center items-center">
+        load failed
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-2xl bg-white grid grid-cols-[30px_1fr] w-[100%]">
       <TimeBar />
       <div>
         <THead />
-        <TBody disabled={!isEditMode} />
+        <TBody disabled={!isEditMode} timeTableData={timeTableData} />
       </div>
     </div>
   );
@@ -37,9 +86,13 @@ const THead = () => {
   );
 };
 
-const TBody = ({ disabled }: { disabled: boolean }) => {
-  // 타임테이블 데이터로 최초 fetching 시에 timetable recoil값 초기화
-  const [timeTableData, setTimeTableData] = useRecoilState(timeTableState);
+const TBody = ({
+  disabled,
+  timeTableData,
+}: {
+  disabled: boolean;
+  timeTableData: ITimeTable;
+}) => {
   const days_en = [
     'sunday',
     'monday',
@@ -50,6 +103,8 @@ const TBody = ({ disabled }: { disabled: boolean }) => {
     'saturday',
   ];
   const overlayStyle = disabled ? 'z-2 pointer-events-none' : '';
+
+  console.log(timeTableData);
   return (
     <div className={`grid w-[63rem] grid-cols-7 ${overlayStyle}`}>
       {days_en.map((day_en, idx) => (

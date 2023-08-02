@@ -8,7 +8,7 @@ interface TimeTableColProps {
 export default function TimeTableCol({ day, avaliability }: TimeTableColProps) {
   return (
     <div className="grid">
-      {avaliability.map((value, idx) => (
+      {avaliability?.map((value, idx) => (
         <TimeTableCell key={idx} day={day} idx={idx} available={value} />
       ))}
     </div>

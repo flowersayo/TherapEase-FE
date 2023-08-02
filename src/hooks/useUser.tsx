@@ -42,6 +42,7 @@ const useUser = () => {
       console.log('authorization failed');
       router.push('/'); // 랜딩페이지로
     },
+    retry: false,
   });
 };
 
