@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 import { useRecoilValue } from 'recoil';
-import { isSignedInState, isCounselorState } from '@/store/user';
+import { userState } from '@/store/user';
 
 import { clientsListState } from '@/store/user';
 
@@ -17,12 +17,14 @@ import { Iclient } from '@/interfaces/interfaces';
 
 import logImage from '../../assets/Emotion-log.png';
 import { BiSolidPencil } from 'react-icons/bi';
+import { IUser } from '@/interfaces/interfaces';
 
 const RecordsPage = () => {
   const router = useRouter();
 
-  const isSignedIn = useRecoilValue<boolean>(isSignedInState); // 로그인 여부
-  const isCounselor = useRecoilValue<boolean | null>(isCounselorState); // 상담자,내담자 여부
+  const user = useRecoilValue<IUser|null>(userState); // 로그인 여부
+  const isSignedIn = user !== null;
+  const isCounselor = user?.role === 'counselee'; // 상담자,내담자 여부
   const isSignedInCounselor = isSignedIn && isCounselor;
 
   const clientsList = useRecoilValue<Iclient[]>(clientsListState);

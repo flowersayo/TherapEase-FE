@@ -15,6 +15,7 @@ export interface IUser {
   role: string;
   refresh: string;
   access: string;
+  partnerId?: string;
 }
 
 export interface IEmotion {

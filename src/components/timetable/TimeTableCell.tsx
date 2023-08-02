@@ -3,6 +3,8 @@ import AvailableTimeSvgSrc from '../../assets/icons/available-time.svg';
 import { useRecoilState } from 'recoil';
 import { timeTableState } from '@/store/timetable';
 
+import { ITimeTable } from '@/interfaces/interfaces';
+
 export default function TimeTableCell({
   available,
   day,
@@ -19,7 +21,7 @@ export default function TimeTableCell({
     setAvailableState((prev) => !prev);
 
     // recoil 전역 상태 변경
-    setTimeTableData((oldtimeTableData) => {
+    setTimeTableData((oldtimeTableData : ITimeTable) => {
       const newDayData = [...oldtimeTableData[day]];
       newDayData[idx] = !newDayData[idx];
       // console.log(day, idx, oldtimeTableData[day][idx], '->', newDayData[idx]);

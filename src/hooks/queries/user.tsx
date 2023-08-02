@@ -1,8 +1,17 @@
 import HTTP from '@/utils/HTTP';
-import axios from 'axios';
 
 export const login = async (body: { code: string }) => {
   const response = await HTTP.post(`/accounts/login/`, body);
 
   return response.data;
+};
+
+export const getUser = async () => {
+  const response = await HTTP.get(`/accounts/check/`);
+  const partnerId = response.data.accountId;
+
+  return {
+    ...response.data,
+    partnerId,
+  };
 };

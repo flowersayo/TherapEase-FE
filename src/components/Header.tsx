@@ -2,30 +2,38 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import LoginModal from './modals/LoginModal';
-import { getUser } from '@/hooks/useUser';
-import { useRecoilValue } from 'recoil';
-import { isSignedInState, isCounselorState } from '@/store/recoil';
 
+import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
+
+import LoginModal from './modals/LoginModal';
 import LogoImage from '../assets/Header-logo.png';
-import { IUser } from '@/interfaces/interfaces';
+
+import { userState } from '@/store/user';
+import { getUser, useUser } from '@/hooks/useUser';
 import { clearUser } from '@/hooks/useUser';
-import { useRecoilState } from 'recoil';
+import { IUser } from '@/interfaces/interfaces';
+
+import { UseQueryResult } from '@tanstack/react-query';
 
 const Header = () => {
   const router = useRouter();
-  const user: IUser = getUser();
 
-  const [isCounselor, setIsCounselor] = useRecoilState<boolean | null>(
-    isCounselorState,
-  );
-  const [isSignedIn, setIsSignedIn] = useRecoilState<boolean>(isSignedInState);
+  const {
+    data,
+    isSuccess,
+    isError,
+    error,
+  }: UseQueryResult<IUser | null, unknown> = useUser(); // 새로 고침시 로그인 유지
 
+  const [user, setUser] = useRecoilState<IUser | null>(userState);
   const [visibleLogout, setVisibleLogout] = useState<boolean>(false); // 로그아웃 버튼 표시 여부
-
+  const resetUserState = useResetRecoilState(userState);
   const BUTTON_STYLE = `h-fit text-body2 select-none`;
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const counselor_id = user?.partnerId ? user.partnerId : user?.id; // 내담자라면 본인과 연동된 상담사 페이지로
 
   const handleOnClickLogin = () => {
     setIsLoginModalOpen(true);
@@ -37,12 +45,12 @@ const Header = () => {
 
   const logout = () => {
     clearUser();
-
-    setIsSignedIn(false);
+    setUser(null);
     router.push('/');
   };
-  const rightMenus: React.ReactNode[] = isSignedIn
-    ? (isCounselor
+
+  const rightMenus: React.ReactNode[] = user
+    ? (user.role === 'counselor'
         ? [
             <Link
               href={{
@@ -115,7 +123,7 @@ const Header = () => {
 
   useEffect(() => {
     setVisibleLogout(false);
-  }, [router]);
+  }, [router.pathname]);
 
   return (
     <div className="fixed top-0 flex justify-between items-center w-screen h-[5.81rem] bg-white shadow-shadow z-10">

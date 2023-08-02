@@ -6,11 +6,12 @@ import Image from 'next/image';
 import CalendarIconSrc from '../../assets/icons/calendar.svg';
 import { useRecoilValue } from 'recoil';
 
-import { isCounselorState } from '@/store/user';
+import { userState } from '@/store/user';
 const TimeTablePage = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const isCounselor = useRecoilValue(isCounselorState);
+  const isCounselor = useRecoilValue(userState)?.role === 'counselor';
+  // TODO -> 상담사 본인이라면 수정가능하도록 id 로 비교하기
 
   return (
     <div
