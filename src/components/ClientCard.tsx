@@ -5,12 +5,25 @@ import { BsList, BsCheckLg } from 'react-icons/bs';
 import { BiSolidPencil } from 'react-icons/bi';
 import { FiMoreHorizontal } from 'react-icons/fi';
 
-import { Iclient } from '@/interfaces/interfaces';
+import { IClient } from '@/interfaces/interfaces';
+import {
+  UseMutationResult,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
+import {
+  updateClient,
+  deleteClient,
+  changeCounseleeStatus,
+  addClient,
+} from '@/hooks/queries/client';
+
+import { queryKeys } from '@/constants/queryKeys';
 
 interface Props {
-  clientInfo: Iclient;
+  clientInfo: IClient;
   detailMenu?: boolean;
-  setSelectedClient?: (clientInfo: Iclient) => void;
+  setSelectedClient?: (clientInfo: IClient) => void;
   setIsDeleteModalVisible?: (value: boolean) => void;
 }
 
@@ -21,16 +34,46 @@ const ClientCard = ({
   setIsDeleteModalVisible,
 }: Props) => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const {
-    counseleeName,
-    counseleeId,
+    name,
+    id,
     start,
-    inProgress,
+    progress,
     counselingDate,
-    counselingTime,
+
     goal,
   } = clientInfo;
+
+  const clientMutation: UseMutationResult<IClient, any, string> = useMutation(
+    async (type: string) => {
+      switch (type) {
+        case 'change_status': // 상태 변경
+          console.log('change');
+          return await changeCounseleeStatus(id);
+
+        case 'update': // 상담 목적 수정
+          var body = {
+            goal: goalInputValue,
+          };
+          return await updateClient(id, body);
+      }
+    },
+    {
+      onError: (error, variable, context) => {
+        // error
+        console.log(error);
+      },
+      onSuccess: (data: IClient, variables, context) => {
+        console.log('client mutate success', data, variables, context);
+        // 내담자 목록 refetch
+        queryClient.invalidateQueries({
+          queryKey: [queryKeys.clientList],
+        });
+      },
+    },
+  );
 
   const [isDetailMenuClicked, setIsDetailMenuClicked] =
     useState<boolean>(false);
@@ -51,6 +94,7 @@ const ClientCard = ({
   const handleInputSubmit = (e: React.MouseEvent) => {
     e.stopPropagation();
 
+    clientMutation.mutate('update');
     // TODO - api 연동
     setIsEditMode(!isEditMode);
   };
@@ -72,6 +116,8 @@ const ClientCard = ({
   const handleDoneClient = (e: React.MouseEvent) => {
     e.stopPropagation();
     // TODO - api 연동 - 내담자 완료처리
+    clientMutation.mutate('change_status');
+    setIsDetailMenuClicked(false);
   };
 
   return (
@@ -80,11 +126,11 @@ const ClientCard = ({
         detailMenu && 'cursor-pointer'
       }`}
       onClick={() => {
-        !isEditMode && router.push(`/records?id=${counseleeId}`, '/records');
+        !isEditMode && router.push(`/records?id=${id}`, '/records');
       }}
     >
       <div className="flex justify-between">
-        <span className="text-body1 mb-[.35rem]">{counseleeName}</span>
+        <span className="text-body1 mb-[.35rem]">{name}</span>
         {detailMenu && (
           <div
             className={`relative w-[3.0rem] h-[3.0rem] ml-auto rounded-[.419rem] flex items-center justify-center cursor-pointer ${
@@ -123,21 +169,23 @@ const ClientCard = ({
 
       <div className="flex items-center mb-[.6rem] gap-[.4rem]">
         <span className="px-[.6rem] rounded-[.4rem] bg-gray-4">
-          {inProgress ? '상담중' : '상담 완료'}
+          {progress ? '상담중' : '상담 완료'}
         </span>
         <div className="w-[.1rem] h-[1.4rem] mx-[.4rem] bg-gray-4"></div>
         <span className="px-[.6rem] rounded-[.4rem] bg-yellow-100">
           {counselingDate}
         </span>
-        <span className="px-[.6rem] rounded-[.4rem] bg-gray-3">
+        {/**<span className="px-[.6rem] rounded-[.4rem] bg-gray-3">
           {counselingTime}
-        </span>
+        </span> */}
       </div>
 
       <div className="flex items-center gap-[.4rem]">
         <span className="px-[.6rem] rounded-[.4rem] bg-gray-2">상담시작일</span>
         <div className="w-[.1rem] h-[1.4rem] mx-[.4rem] bg-gray-4"></div>
-        <span className="px-[.6rem] rounded-[.4rem] bg-gray-2">{start}</span>
+        <span className="px-[.6rem] rounded-[.4rem] bg-gray-2">
+          {start.substring(0, 10)}
+        </span>
       </div>
       <hr className="mt-[1.3rem] mb-[1.2rem]"></hr>
       <div className="flex items-center">

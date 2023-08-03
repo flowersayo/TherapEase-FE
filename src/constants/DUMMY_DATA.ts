@@ -1,3 +1,5 @@
+/*
+
 import { Iclient } from '@/interfaces/interfaces';
 
 export const DUMMY_CLIENTS_LIST: Iclient[] = [
@@ -146,7 +148,7 @@ export const DUMMY_CLIENTS_LIST: Iclient[] = [
     goal: '우울감이 있어 해소하고 싶음',
   },
 ];
-
+*/
 export const DUMMY_EMOTION_RECORDS = {
   page: 1,
   records: [

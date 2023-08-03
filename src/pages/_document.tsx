@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const Document = () => {
   return (
-    <Html lang="en">
+    <Html lang="en" className="h-full">
       <Head>
         <link
           rel="stylesheet"
@@ -10,7 +10,7 @@ const Document = () => {
         />
       </Head>
       <title>TherapEase - Make Your Counseling Perfect</title>
-      <body>
+      <body className="h-full">
         <Main />
         <NextScript />
         <script dangerouslySetInnerHTML={{ __html: 'new WOW().init();' }} />

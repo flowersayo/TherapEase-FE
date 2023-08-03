@@ -10,7 +10,7 @@ const Alert = ({ text }: Props) => {
       <div
         className={`text-gray-3 text-body3 bg-[#0000004d] px-[8.4rem] py-[0.6rem] rounded-[3rem]`}
       >
-        권가은{text}
+        {text}
       </div>
     </div>
   );

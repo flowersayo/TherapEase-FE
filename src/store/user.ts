@@ -1,17 +1,15 @@
 import { atom, atomFamily } from 'recoil';
-import { Iclient, IUser } from '@/interfaces/interfaces';
+import { IClient, IUser } from '@/interfaces/interfaces';
 
-import { DUMMY_CLIENTS_LIST } from '@/constants/DUMMY_DATA';
-
-export const userState = atom<IUser|null>({
+export const userState = atom<IUser | null>({
   key: 'userState',
   default: null,
 });
 
-export const clientsListState = atom<Iclient[]>({
+export const clientsListState = atom<IClient[]>({
   key: 'clientsListState',
   // default: [],
-  default: DUMMY_CLIENTS_LIST,
+  default: [],
 });
 
 // export const currentClientState = atomFamily<Iclient, string>({

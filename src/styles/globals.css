@@ -45,6 +45,9 @@ body {
   color: #000000;
   background: var(--background-color);
 }
+#__next {
+  height: 100%;
+}
 
 /* custom scroll bar */
 ::-webkit-scrollbar {

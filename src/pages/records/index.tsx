@@ -13,31 +13,34 @@ import RecordsList from '@/components/records/RecordsList';
 import ClientCard from '@/components/ClientCard';
 import { ButtonSmall } from '@/components/Buttons';
 
-import { Iclient } from '@/interfaces/interfaces';
+import { IClient } from '@/interfaces/interfaces';
 
 import logImage from '../../assets/Emotion-log.png';
 import { BiSolidPencil } from 'react-icons/bi';
 import { IUser } from '@/interfaces/interfaces';
+import { COUNSELOR } from '@/constants/constants';
 
 const RecordsPage = () => {
   const router = useRouter();
 
-  const user = useRecoilValue<IUser|null>(userState); // 로그인 여부
+  const user = useRecoilValue<IUser | null>(userState); // 로그인 여부
+
   const isSignedIn = user !== null;
-  const isCounselor = user?.role === 'counselee'; // 상담자,내담자 여부
+  const isCounselor = user?.role === COUNSELOR; // 상담자,내담자 여부
   const isSignedInCounselor = isSignedIn && isCounselor;
 
-  const clientsList = useRecoilValue<Iclient[]>(clientsListState);
-  const currentClientInfo: Iclient = clientsList.find(
-    (client) => client.counseleeId === router.query.id,
+  const clientsList = useRecoilValue<IClient[]>(clientsListState);
+
+  const currentClientInfo: IClient = clientsList.find(
+    (client) => client.id === parseInt(router.query.id as string),
   ) ?? {
-    counseleeName: '',
-    counseleeId: '',
+    name: '',
+    id: -1,
     start: '',
-    inProgress: false,
+    progress: false,
     counselingDate: '',
-    counselingTime: '',
     goal: '',
+    code: '',
   };
 
   return (
