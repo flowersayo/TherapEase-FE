@@ -16,7 +16,7 @@ const LandingPage = () => {
   const aboutUsRef = useRef<HTMLDivElement | null>(null);
   const theTherapistRef = useRef<HTMLDivElement | null>(null);
   const theClientRef = useRef<HTMLImageElement | null>(null);
-  const startBtnRef = useRef<HTMLImageElement | null>(null);
+
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const observeList = [
@@ -24,7 +24,6 @@ const LandingPage = () => {
     aboutUsRef,
     theTherapistRef,
     theClientRef,
-    startBtnRef,
   ];
 
   useEffect(() => {
@@ -96,13 +95,6 @@ const LandingPage = () => {
 
               leftImg.classList.remove('animate__fadeInLeft');
               rightImg.classList.remove('animate__fadeInRight');
-            }
-            break;
-          case 'start-btn':
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate__fadeInDown');
-            } else {
-              entry.target.classList.remove('animate__fadeInDown');
             }
             break;
         }
@@ -257,11 +249,7 @@ const LandingPage = () => {
         <span className="text-heading2 text-yellow-100">
           심리 상담, 테라피즈로 시작해보세요.
         </span>
-        <div
-          ref={startBtnRef}
-          data-name="start-btn"
-          className="animate__animated"
-        >
+        <div data-name="start-btn" className="animate__animated">
           <ButtonLarge
             text={'지금 시작하기'}
             onClick={() => setIsLoginModalOpen(true)}
