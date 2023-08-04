@@ -28,7 +28,7 @@ const EmotionCard = ({
             {
               DUMMY_LARGE_EMOTION.find(
                 ({ value }) => value === emotion.mainEmotion,
-              )?.label
+              )?.labelShort
             }
           </span>
           <div className="w-full h-[0.1rem] bg-gray-4"></div>

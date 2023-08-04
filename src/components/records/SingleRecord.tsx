@@ -36,15 +36,15 @@ const SingleRecord = ({ record, idx }: Props) => {
         <div className="text-body1 ml-[2.4rem] mr-[6.8rem]">
           {parseDateString(Object.keys(record)[0])}
         </div>
-        <div className="flex gap-[2.2rem]">
+        <div className="flex gap-[1.2rem]">
           {Object.values(record)[0].emotions?.map(
             (emotion: IEmotion, idx: number) => {
               return (
                 <div
                   key={idx}
-                  className="h-[3.8rem] flex items-center px-[1.5rem] py-[.8rem] border-[.1rem] border-gray-3 rounded-[.4rem] gap-[.7rem]"
+                  className="w-[24rem] h-[3.8rem] flex items-center justify-center px-[1.5rem] py-[.8rem] border-[.1rem] border-gray-3 rounded-[.4rem] gap-[.7rem]"
                 >
-                  <span className="px-[.6rem] py-[.5rem] text-label1 border-transparent rounded-[.4rem] bg-yellow-100">
+                  <span className="px-[.6rem] py-[.5rem] text-label1 border-transparent rounded-[.4rem] bg-gray-2">
                     {
                       // TODO - 로직 개선
                       DUMMY_MEDIUM_EMOTION.find(

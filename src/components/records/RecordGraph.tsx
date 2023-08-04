@@ -43,13 +43,13 @@ const RecordGraph = ({ clientId }: Props) => {
                   {emotions.map((emotion: IEmotion, idx: number) => {
                     const { mainEmotion, intensity, feeling } = emotion;
 
-                  return (
-                    <div className="flex flex-col-reverse gap-[0.2rem]">
-                      <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-yellow-100">
-                        {DUMMY_LARGE_EMOTION.find(
-                          ({ value }) => value === mainEmotion,
-                        )?.labelShort ?? '-'}
-                      </span>
+                    return (
+                      <div className="flex flex-col-reverse items-center gap-[0.2rem]">
+                        <span className="text-label2 text-gray-9 text-center px-[0.4rem] py-[0.1rem] rounded-[0.4rem] bg-gray-2">
+                          {DUMMY_LARGE_EMOTION.find(
+                            ({ value }) => value === mainEmotion,
+                          )?.labelShort ?? '-'}
+                        </span>
 
                         {Array(intensity)
                           .fill('')
@@ -65,7 +65,7 @@ const RecordGraph = ({ clientId }: Props) => {
                             return (
                               <div
                                 key={idx}
-                                className={`w-[2.6rem] h-[2.6rem] rounded-[0.359rem]`}
+                                className={`w-[1.4rem] h-[1.4rem] rounded-[0.3rem]`}
                                 style={{
                                   backgroundColor: `var(--${color}-${intensity})`,
                                 }}
