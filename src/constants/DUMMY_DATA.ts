@@ -151,26 +151,62 @@ export const DUMMY_CLIENTS_LIST: Iclient[] = [
 */
 export const DUMMY_EMOTION_RECORDS = {
   page: 1,
+  totalCount: 14,
   records: [
     {
-      '2023-05-23': {
+      '2023-08-04': {
+        emotions: null,
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-08-03': {
         emotions: [
           {
-            mainEmotion: 'joyful',
-            subEmotion: 'energetic',
-            feeling: -1,
+            mainEmotion: 'peaceful',
+            subEmotion: 'nurturing',
+            feeling: 1,
             intensity: 5,
           },
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 0,
+            mainEmotion: 'joyful',
+            subEmotion: 'energetic',
+            feeling: 1,
+            intensity: 4,
+          },
+          {
+            mainEmotion: 'powerful',
+            subEmotion: 'hopeful',
+            feeling: 1,
+            intensity: 2,
+          },
+        ],
+        details1: '지원한 다른 회사에서 인턴 제의가 왔다!',
+        details2: '스스로에 대한 자신감이 생기고 내 자신이 대견했다.',
+        details3: null,
+      },
+    },
+    {
+      '2023-08-02': {
+        emotions: [
+          {
+            mainEmotion: 'peaceful',
+            subEmotion: 'content',
+            feeling: 1,
             intensity: 1,
           },
           {
-            mainEmotion: 'mad',
-            subEmotion: 'hurt',
+            mainEmotion: 'joyful',
+            subEmotion: 'energetic',
             feeling: 1,
+            intensity: 2,
+          },
+          {
+            mainEmotion: 'powerful',
+            subEmotion: 'hopeful',
+            feeling: 0,
             intensity: 3,
           },
         ],
@@ -180,53 +216,161 @@ export const DUMMY_EMOTION_RECORDS = {
       },
     },
     {
-      '2023-05-24': {
+      '2023-08-01': {
         emotions: [
           {
             mainEmotion: 'mad',
-            subEmotion: 'hurt',
-            feeling: -1,
-            intensity: 2,
-          },
-          {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 0,
+            subEmotion: 'critical',
+            feeling: 1,
             intensity: 1,
           },
           {
             mainEmotion: 'sad',
-            subEmotion: 'ashamed',
+            subEmotion: 'lonely',
+            feeling: 0,
+            intensity: 3,
+          },
+          {
+            mainEmotion: 'scared',
+            subEmotion: 'confused',
+            feeling: -1,
+            intensity: 1,
+          },
+        ],
+        details1: '회사에 지원했는데 면접 탈락 소식을 듣게 되었다.',
+        details2:
+          '평소같았으면 자책했겠지만 스스로 잘못을 돌아보고 성장할 수 있었다.',
+        details3:
+          '그렇지만 여전히 탈락의 슬픔은 있었는데 슬퍼해도 되는 건지 긍정적으로 생각해야하는 지 혼란스러웠다. 그래서 친구에게 고민을 털어 놓았다.',
+      },
+    },
+    {
+      '2023-07-31': {
+        emotions: [
+          {
+            mainEmotion: 'mad',
+            subEmotion: 'rage',
             feeling: 1,
+            intensity: 2,
+          },
+          {
+            mainEmotion: 'sad',
+            subEmotion: 'lonely',
+            feeling: 0,
+            intensity: 1,
+          },
+          {
+            mainEmotion: 'scared',
+            subEmotion: 'confused',
+            feeling: -1,
+            intensity: 3,
+          },
+        ],
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-07-30': {
+        emotions: [
+          {
+            mainEmotion: 'mad',
+            subEmotion: 'rage',
+            feeling: -1,
+            intensity: 3,
+          },
+          {
+            mainEmotion: 'sad',
+            subEmotion: 'guilty',
+            feeling: -1,
+            intensity: 2,
+          },
+          {
+            mainEmotion: 'scared',
+            subEmotion: 'helpless',
+            feeling: -1,
             intensity: 2,
           },
         ],
         details1: null,
-        details2:
-          '그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 텍스트로, 최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다.',
-        details3:
-          '그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 텍스트로, 최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다.',
+        details2: null,
+        details3: null,
       },
     },
     {
-      '2023-05-25': {
+      '2023-07-29': {
         emotions: [
           {
+            mainEmotion: 'mad',
+            subEmotion: 'hateful',
+            feeling: -1,
+            intensity: 5,
+          },
+          {
             mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            subEmotion: 'depressed',
             feeling: -1,
             intensity: 4,
           },
           {
             mainEmotion: 'scared',
-            subEmotion: 'rejected',
-            feeling: 0,
-            intensity: 2,
+            subEmotion: 'anxious',
+            feeling: -1,
+            intensity: 4,
           },
+        ],
+        details1: '동창회를 해서 친구들의 성공 소식을 듣게 되었다.',
+        details2:
+          '친구들의 성공 소식을 듣고 그들의 불행을 바라는 내 자신이 혐오스러웠다.',
+        details3:
+          '아직은 감정이 서툴어 집에 일이 있다고 둘러대며 자리를 피했다.',
+      },
+    },
+    {
+      '2023-07-28': {
+        emotions: null,
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-07-27': {
+        emotions: [
           {
             mainEmotion: 'mad',
-            subEmotion: 'angry',
+            subEmotion: 'rage',
             feeling: 1,
+            intensity: 1,
+          },
+        ],
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-07-26': {
+        emotions: null,
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-07-25': {
+        emotions: [
+          {
+            mainEmotion: 'mad',
+            subEmotion: 'critical',
+            feeling: 1,
+            intensity: 1,
+          },
+          {
+            mainEmotion: 'sad',
+            subEmotion: 'lonely',
+            feeling: 0,
             intensity: 3,
           },
         ],
@@ -236,85 +380,59 @@ export const DUMMY_EMOTION_RECORDS = {
       },
     },
     {
-      '2023-05-26': {
+      '2023-07-24': {
+        emotions: null,
+        details1: null,
+        details2: null,
+        details3: null,
+      },
+    },
+    {
+      '2023-07-23': {
         emotions: [
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            mainEmotion: 'mad',
+            subEmotion: 'rage',
             feeling: -1,
-            intensity: 4,
+            intensity: 3,
           },
           {
             mainEmotion: 'sad',
             subEmotion: 'guilty',
-            feeling: 0,
+            feeling: -1,
             intensity: 2,
           },
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 1,
-            intensity: 5,
+            mainEmotion: 'scared',
+            subEmotion: 'helpless',
+            feeling: -1,
+            intensity: 2,
           },
         ],
         details1: null,
-        details2: '이런 일이 있었어요',
-        details3: '이런 일이 있었어요',
-      },
-    },
-    {
-      '2023-05-27': {
-        emotions: [
-          {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: -1,
-            intensity: 4,
-          },
-          {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 0,
-            intensity: 1,
-          },
-          {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 1,
-            intensity: 3,
-          },
-        ],
-        details1:
-          '그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 텍스트로, 최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다.',
         details2: null,
-        details3: '이런 일이 있었어요',
+        details3: null,
       },
     },
     {
-      '2023-05-28': {
+      '2023-07-22': {
         emotions: [
           {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
+            mainEmotion: 'mad',
+            subEmotion: 'rage',
             feeling: -1,
             intensity: 4,
           },
           {
             mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 0,
-            intensity: 1,
-          },
-          {
-            mainEmotion: 'sad',
-            subEmotion: 'guilty',
-            feeling: 1,
+            subEmotion: 'depressed',
+            feeling: -1,
             intensity: 3,
           },
         ],
         details1: null,
-        details2: '이런 일이 있었어요',
-        details3: '이런 일이 있었어요',
+        details2: null,
+        details3: null,
       },
     },
   ],
@@ -322,165 +440,148 @@ export const DUMMY_EMOTION_RECORDS = {
 
 export const DUMMY_EMOTION_GRAPH_RECORDS = [
   {
-    date: '2023-05-23',
+    date: '2023-07-29',
     emotions: [
       {
-        mainEmotion: 'joyful',
-        subEmotion: 'energetic',
+        mainEmotion: 'mad',
+        subEmotion: 'hateful',
         feeling: -1,
         intensity: 5,
       },
       {
         mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 0,
-        intensity: 1,
-      },
-      {
-        mainEmotion: 'mad',
-        subEmotion: 'hurt',
-        feeling: 1,
-        intensity: 3,
-      },
-    ],
-  },
-  {
-    date: '2023-05-24',
-    emotions: [
-      {
-        mainEmotion: 'mad',
-        subEmotion: 'hurt',
-        feeling: -1,
-        intensity: 2,
-      },
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 0,
-        intensity: 1,
-      },
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'ashamed',
-        feeling: 1,
-        intensity: 2,
-      },
-    ],
-  },
-  {
-    date: '2023-05-25',
-    emotions: [
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        subEmotion: 'depressed',
         feeling: -1,
         intensity: 4,
       },
       {
         mainEmotion: 'scared',
-        subEmotion: 'rejected',
-        feeling: 0,
+        subEmotion: 'anxious',
+        feeling: -1,
+        intensity: 4,
+      },
+    ],
+  },
+  {
+    date: '2023-07-30',
+    emotions: [
+      {
+        mainEmotion: 'mad',
+        subEmotion: 'rage',
+        feeling: -1,
+        intensity: 3,
+      },
+      {
+        mainEmotion: 'sad',
+        subEmotion: 'guilty',
+        feeling: -1,
         intensity: 2,
       },
       {
+        mainEmotion: 'scared',
+        subEmotion: 'helpless',
+        feeling: -1,
+        intensity: 2,
+      },
+    ],
+  },
+
+  {
+    date: '2023-07-31',
+    emotions: [
+      {
         mainEmotion: 'mad',
-        subEmotion: 'angry',
+        subEmotion: 'rage',
         feeling: 1,
-        intensity: 3,
-      },
-    ],
-  },
-  {
-    date: '2023-05-26',
-    emotions: [
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: -1,
-        intensity: 4,
+        intensity: 2,
       },
       {
         mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        subEmotion: 'lonely',
         feeling: 0,
         intensity: 1,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 1,
+        mainEmotion: 'scared',
+        subEmotion: 'confused',
+        feeling: -1,
         intensity: 3,
       },
     ],
   },
   {
-    date: '2023-05-27',
+    date: '2023-08-01',
     emotions: [
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: -1,
-        intensity: 4,
+        mainEmotion: 'mad',
+        subEmotion: 'critical',
+        feeling: 1,
+        intensity: 1,
       },
       {
         mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        subEmotion: 'lonely',
         feeling: 0,
         intensity: 3,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'scared',
+        subEmotion: 'confused',
+        feeling: -1,
+        intensity: 1,
+      },
+    ],
+  },
+
+  {
+    date: '2023-08-02',
+    emotions: [
+      {
+        mainEmotion: 'peaceful',
+        subEmotion: 'content',
+        feeling: 1,
+        intensity: 1,
+      },
+      {
+        mainEmotion: 'joyful',
+        subEmotion: 'energetic',
+        feeling: 1,
+        intensity: 2,
+      },
+      {
+        mainEmotion: 'powerful',
+        subEmotion: 'hopeful',
+        feeling: 0,
+        intensity: 3,
+      },
+    ],
+  },
+  {
+    date: '2023-08-03',
+    emotions: [
+      {
+        mainEmotion: 'peaceful',
+        subEmotion: 'nurturing',
         feeling: 1,
         intensity: 5,
       },
-    ],
-  },
-  {
-    date: '2023-05-28',
-    emotions: [
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: -1,
+        mainEmotion: 'joyful',
+        subEmotion: 'energetic',
+        feeling: 1,
         intensity: 4,
       },
       {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 0,
-        intensity: 1,
-      },
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
+        mainEmotion: 'powerful',
+        subEmotion: 'hopeful',
         feeling: 1,
-        intensity: 3,
+        intensity: 2,
       },
     ],
   },
   {
-    date: '2023-05-29',
-    emotions: [
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: -1,
-        intensity: 1,
-      },
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 0,
-        intensity: 5,
-      },
-      {
-        mainEmotion: 'sad',
-        subEmotion: 'guilty',
-        feeling: 1,
-        intensity: 3,
-      },
-    ],
+    date: '2023-08-04',
+    emotions: [],
   },
 ];
 

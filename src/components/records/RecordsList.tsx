@@ -14,7 +14,7 @@ const RecordsList = ({ clientId }: Props) => {
   const [emotionRecordList, setEmotionRecordList] = useState<any>([]);
 
   const [page, setPage] = useState<number>(1);
-  const [totalCount, setTotalCount] = useState<number>(22); // 전체 리스트 개수
+  const [totalCount, setTotalCount] = useState<number>(14); // 전체 리스트 개수
 
   useEffect(() => {
     fetchEmotionRecords();
@@ -22,9 +22,10 @@ const RecordsList = ({ clientId }: Props) => {
 
   const fetchEmotionRecords = () => {
     // TODO - 감정기록 리스트 조회 API 연동 by {clientId}
-    const { page, records } = DUMMY_EMOTION_RECORDS;
+    const { page, totalCount, records } = DUMMY_EMOTION_RECORDS;
     setEmotionRecordList(records);
 
+    setTotalCount(totalCount);
     setPage(page);
   };
 
@@ -60,13 +61,15 @@ const RecordsList = ({ clientId }: Props) => {
       </div>
       {/* 감정기록 리스트 영역 */}
       <div>
-        {emotionRecordList.map((record: any, idx: number) => {
-          return (
-            <div key={idx}>
-              <SingleRecord record={record} idx={idx} />
-            </div>
-          );
-        })}
+        {emotionRecordList
+          .slice((page - 1) * 7, page * 7)
+          .map((record: any, idx: number) => {
+            return (
+              <div key={idx}>
+                <SingleRecord record={record} idx={idx} />
+              </div>
+            );
+          })}
       </div>
     </div>
   );
