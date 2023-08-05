@@ -86,7 +86,7 @@
       <td align="center">감정기록 조회</td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/TherapEase-CEOS/TherapEase-FE/assets/86418674/7478032c-334a-4c8e-b258-67df27993466.png" /></td>
+      <td align="center"><img src="https://github.com/TherapEase-CEOS/TherapEase-FE/assets/86418674/b3cf47fe-edac-4ff2-936c-03a074b48055.png" /></td>
       <td align="center"><img src="https://github.com/TherapEase-CEOS/TherapEase-FE/assets/86418674/47ee73dc-bdcd-41c1-8a5b-eb01b750bf70.png" /></td>
     </tr>
     <tr>
@@ -98,6 +98,7 @@
       <td align="center"><img src="https://github.com/TherapEase-CEOS/TherapEase-FE/assets/86418674/59e114cd-028d-4b0c-a373-38c73fbc7cf8.png" /></td>
     </tr>
  </table>
+
 
 
 ## 상담사
