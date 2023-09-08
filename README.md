@@ -19,6 +19,8 @@
     </p>
     <p>
         <a href="https://therapease.site/" target="_blank">지금 바로 접속하기</a>
+        <br /><br />
+        ( 상담자 테스트 코드 : or1234, 내담자 테스트 코드 : ee4321 )
     </p>
     <a href="https://www.notion.so/693c9bade690459c98331eadaf722d75" target="_blank">개발팀노션</a> &nbsp; &nbsp; |&nbsp; &nbsp; 
     <a href="https://www.notion.so/3faee7cce58445b8afa8714e9d16ae67" target="_blank">개발일지</a> &nbsp; &nbsp; |&nbsp; &nbsp;
