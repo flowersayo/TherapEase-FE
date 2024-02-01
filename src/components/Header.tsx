@@ -105,6 +105,7 @@ const Header = () => {
             <div
               className="absolute top-[3.6rem] left-[.1rem] py-[1.0rem] px-[1.6rem] text-label1 text-gray-6 bg-white border-solid border-[.1rem] border-gray-3 rounded-[.4rem] cursor-pointer select-none"
               onClick={logout}
+
             >
               로그아웃
             </div>
