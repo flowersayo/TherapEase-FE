@@ -29,7 +29,7 @@
     <img src="https://img.shields.io/badge/release-1.0.0-8F84ED"> 
     <br /><br />
     <img src="https://img.shields.io/badge/node-18.17.0-339933?logo=node.js">
-    <img src="https://img.shields.io/badge/NestJS-13.4.8-E0234E?logo=NestJS">
+    <img src="https://img.shields.io/badge/NextJS-13.4.8-E0234E?logo=NestJS">
     <img src="https://img.shields.io/badge/TypeScript-5.1.6-3178C6?logo=typescript">
     <br />
     <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?logo=React">
